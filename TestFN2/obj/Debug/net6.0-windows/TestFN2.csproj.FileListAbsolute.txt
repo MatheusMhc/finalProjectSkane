@@ -1,0 +1,17 @@
+C:\Users\Matheus.daSilva\source\repos\TestFN2\TestFN2\bin\Debug\net6.0-windows\TestFN2.exe
+C:\Users\Matheus.daSilva\source\repos\TestFN2\TestFN2\bin\Debug\net6.0-windows\TestFN2.deps.json
+C:\Users\Matheus.daSilva\source\repos\TestFN2\TestFN2\bin\Debug\net6.0-windows\TestFN2.runtimeconfig.json
+C:\Users\Matheus.daSilva\source\repos\TestFN2\TestFN2\bin\Debug\net6.0-windows\TestFN2.dll
+C:\Users\Matheus.daSilva\source\repos\TestFN2\TestFN2\bin\Debug\net6.0-windows\TestFN2.pdb
+C:\Users\Matheus.daSilva\source\repos\TestFN2\TestFN2\obj\Debug\net6.0-windows\TestFN2.csproj.AssemblyReference.cache
+C:\Users\Matheus.daSilva\source\repos\TestFN2\TestFN2\obj\Debug\net6.0-windows\TestFN2.Form1.resources
+C:\Users\Matheus.daSilva\source\repos\TestFN2\TestFN2\obj\Debug\net6.0-windows\TestFN2.csproj.GenerateResource.cache
+C:\Users\Matheus.daSilva\source\repos\TestFN2\TestFN2\obj\Debug\net6.0-windows\TestFN2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Matheus.daSilva\source\repos\TestFN2\TestFN2\obj\Debug\net6.0-windows\TestFN2.AssemblyInfoInputs.cache
+C:\Users\Matheus.daSilva\source\repos\TestFN2\TestFN2\obj\Debug\net6.0-windows\TestFN2.AssemblyInfo.cs
+C:\Users\Matheus.daSilva\source\repos\TestFN2\TestFN2\obj\Debug\net6.0-windows\TestFN2.csproj.CoreCompileInputs.cache
+C:\Users\Matheus.daSilva\source\repos\TestFN2\TestFN2\obj\Debug\net6.0-windows\TestFN2.dll
+C:\Users\Matheus.daSilva\source\repos\TestFN2\TestFN2\obj\Debug\net6.0-windows\refint\TestFN2.dll
+C:\Users\Matheus.daSilva\source\repos\TestFN2\TestFN2\obj\Debug\net6.0-windows\TestFN2.pdb
+C:\Users\Matheus.daSilva\source\repos\TestFN2\TestFN2\obj\Debug\net6.0-windows\TestFN2.genruntimeconfig.cache
+C:\Users\Matheus.daSilva\source\repos\TestFN2\TestFN2\obj\Debug\net6.0-windows\ref\TestFN2.dll
