@@ -19,8 +19,8 @@ namespace TestFN2.Business
 
         public Skane() { 
             
-            head = new Point(0, 0);
-            tail = new Point(0, 3);
+            head = new Point(0, 3);
+            tail = new Point(0, 0);
             headDirection = Directions.RIGHT;
             turnPoint = new List<Point>();
         }
@@ -52,6 +52,60 @@ namespace TestFN2.Business
             }
             else
             {
+                Point temp = tail;
+
+                foreach(Point p in turnPoint)
+                {
+                    if (temp.X == p.X && temp.Y > p.Y)
+                    {
+                        for (int y = p.Y; y < temp.Y; y++)
+                        {
+                            myStack.Push(new Point(temp.X, y));
+                        }
+                    }
+
+                    if (temp.X == p.X && temp.Y < p.Y)
+                    {
+                        for (int y = p.Y; y > temp.Y; y--)
+                        {
+                            myStack.Push(new Point(temp.X, y));
+                        }
+                    }
+
+                    if (temp.Y == p.Y && temp.X > p.X)
+                    {
+                        for (int x = p.X; x < temp.X; x++)
+                        {
+                            myStack.Push(new Point(x, temp.Y));
+                        }
+                    }
+
+                    if (temp.Y == p.Y && temp.X < p.X)
+                    {
+                        for (int y = p.Y; y < temp.Y; y--)
+                        {
+                            myStack.Push(new Point(temp.X, y));
+                        }
+                    }
+
+                    temp = p;
+                }
+
+                if (temp.X == head.X && temp.Y < head.Y)
+                {
+                    for (int y = head.Y; y > temp.Y; y--)
+                    {
+                        myStack.Push(new Point(temp.X, y));
+                    }
+                }
+
+                if (temp.Y == head.Y && temp.X < head.X)
+                {
+                    for (int y = head.Y; y < temp.Y; y--)
+                    {
+                        myStack.Push(new Point(temp.X, y));
+                    }
+                }
 
             }
 

@@ -25,7 +25,6 @@ namespace TestFN2
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            Point a = snake.head;
             for (int i = 0; i < tableLayoutPanel1.RowCount; i++)
             {
                 for (int j = 0; j < tableLayoutPanel1.ColumnCount; j++)
@@ -37,7 +36,6 @@ namespace TestFN2
 
             if (snake.headDirection == Directions.RIGHT)
             {
-                snake.turnPoint.Add(new Point(snake.head.X, snake.head.Y));
                 Point point = new Point(snake.head.X, snake.head.Y + 1);
                 Point point2 = new Point(snake.tail.X, snake.tail.Y + 1);
                 snake.headDirection = Directions.RIGHT;
@@ -47,16 +45,14 @@ namespace TestFN2
 
             if (snake.headDirection == Directions.DOWN)
             {
-                snake.turnPoint.Add(new Point(snake.head.X, snake.head.Y));
-                Point point = new Point(snake.head.X + 1, snake.head.Y);
-                Point point2 = new Point(snake.tail.X + 1, snake.tail.Y);
+                Point point = new Point(snake.head.X, snake.head.Y + 1);
+                //Point point2 = new Point(snake.tail.X, snake.tail.Y);
                 snake.headDirection = Directions.DOWN;
                 snake.head = point;
-                snake.tail = point2;
+                //snake.tail = point2;
             }
             if (snake.headDirection == Directions.LEFT)
             {
-                snake.turnPoint.Add(new Point(snake.head.X, snake.head.Y));
                 Point point = new Point(snake.head.X, snake.head.Y - 1);
                 Point point2 = new Point(snake.tail.X, snake.tail.Y - 1);
                 snake.headDirection = Directions.LEFT;
@@ -65,7 +61,6 @@ namespace TestFN2
             }
             if (snake.headDirection == Directions.UP)
             {
-                snake.turnPoint.Add(new Point(snake.head.X, snake.head.Y));
                 Point point = new Point(snake.head.X - 1, snake.head.Y);
                 Point point2 = new Point(snake.tail.X - 1, snake.tail.Y);
                 snake.headDirection = Directions.UP;
@@ -96,15 +91,19 @@ namespace TestFN2
             switch (e.KeyCode)
             {
                 case Keys.Left:
+                    //snake.turnPoint.Add(new Point(snake.head.X, snake.head.Y));
                     snake.headDirection = Directions.LEFT;
                     break;
                 case Keys.Right:
+                    //snake.turnPoint.Add(new Point(snake.head.X, snake.head.Y));
                     snake.headDirection = Directions.RIGHT;
                     break;
                 case Keys.Up:
+                    //snake.turnPoint.Add(new Point(snake.head.X, snake.head.Y));
                     snake.headDirection = Directions.UP;
                     break;
                 case Keys.Down:
+                    snake.turnPoint.Add(new Point(snake.head.X, snake.head.Y));
                     snake.headDirection = Directions.DOWN;
                     break;
             }
