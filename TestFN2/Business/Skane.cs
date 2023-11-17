@@ -53,8 +53,14 @@ namespace TestFN2.Business
             else
             {
                 Point temp = tail;
+                Point first = turnPoint.First();
+                if(tail.X == first.X && tail.Y == first.Y)
+                {
+                    turnPoint.Remove(first);
+                    myStack.Push(new Point(tail.X, tail.Y));
+                }
 
-                foreach(Point p in turnPoint)
+                foreach (Point p in turnPoint)
                 {
                     if (temp.X == p.X && temp.Y > p.Y)
                     {
@@ -66,7 +72,7 @@ namespace TestFN2.Business
 
                     if (temp.X == p.X && temp.Y < p.Y)
                     {
-                        for (int y = p.Y; y > temp.Y; y--)
+                        for (int y = p.Y; y >= temp.Y; y--)
                         {
                             myStack.Push(new Point(temp.X, y));
                         }
@@ -101,9 +107,9 @@ namespace TestFN2.Business
 
                 if (temp.Y == head.Y && temp.X < head.X)
                 {
-                    for (int y = head.Y; y < temp.Y; y--)
+                    for (int x = head.X; x > temp.X; x--)
                     {
-                        myStack.Push(new Point(temp.X, y));
+                        myStack.Push(new Point(x, temp.Y));
                     }
                 }
 

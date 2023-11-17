@@ -45,11 +45,11 @@ namespace TestFN2
 
             if (snake.headDirection == Directions.DOWN)
             {
-                Point point = new Point(snake.head.X, snake.head.Y + 1);
-                //Point point2 = new Point(snake.tail.X, snake.tail.Y);
+                Point point = new Point(snake.head.X + 1, snake.head.Y);
+                Point point2 = new Point(snake.tail.X, snake.tail.Y + 1);
                 snake.headDirection = Directions.DOWN;
                 snake.head = point;
-                //snake.tail = point2;
+                snake.tail = point2;
             }
             if (snake.headDirection == Directions.LEFT)
             {
