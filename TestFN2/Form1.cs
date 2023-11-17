@@ -60,18 +60,22 @@ namespace TestFN2
             switch (e.KeyCode)
             {
                 case Keys.Left:
+                    if (snake.headDirection == Directions.RIGHT) return;
                     snake.turnPoint.Add(new TurnPoint(new Point(snake.head.X, snake.head.Y), Directions.LEFT, snake.tailDirection));
                     snake.headDirection = Directions.LEFT;
                     break;
                 case Keys.Right:
+                    if (snake.headDirection == Directions.LEFT) return;
                     snake.turnPoint.Add(new TurnPoint(new Point(snake.head.X, snake.head.Y), Directions.RIGHT, snake.tailDirection));
                     snake.headDirection = Directions.RIGHT;
                     break;
                 case Keys.Up:
+                    if (snake.headDirection == Directions.DOWN) return;
                     snake.turnPoint.Add(new TurnPoint(new Point(snake.head.X, snake.head.Y), Directions.UP, snake.tailDirection));
                     snake.headDirection = Directions.UP;
                     break;
                 case Keys.Down:
+                    if (snake.headDirection == Directions.UP) return;
                     snake.turnPoint.Add(new TurnPoint(new Point(snake.head.X, snake.head.Y), Directions.DOWN, snake.tailDirection));
                     snake.headDirection = Directions.DOWN;
                     break;

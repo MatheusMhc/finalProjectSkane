@@ -22,7 +22,7 @@ namespace TestFN2.Business
 
         public Skane() { 
             
-            head = new Point(3, 0);
+            head = new Point(9, 0);
             tail = new Point(0, 0);
             headDirection = Directions.DOWN;
             tailDirection = Directions.DOWN;
@@ -125,7 +125,6 @@ namespace TestFN2.Business
                     }
                 }
 
-                //myStack.Push(head);
             }
             else
             {
@@ -142,7 +141,7 @@ namespace TestFN2.Business
                 {
                     if (temp.X == p.turnPoint.X && temp.Y > p.turnPoint.Y)
                     {
-                        for (int y = p.turnPoint.Y; y < temp.Y; y++)
+                        for (int y = p.turnPoint.Y; y <= temp.Y; y++)
                         {
                             myStack.Push(new Point(temp.X, y));
                         }
@@ -158,7 +157,7 @@ namespace TestFN2.Business
 
                     if (temp.Y == p.turnPoint.Y && temp.X > p.turnPoint.X)
                     {
-                        for (int x = p.turnPoint.X; x < temp.X; x++)
+                        for (int x = p.turnPoint.X; x <= temp.X; x++)
                         {
                             myStack.Push(new Point(x, temp.Y));
                         }
@@ -166,9 +165,9 @@ namespace TestFN2.Business
 
                     if (temp.Y == p.turnPoint.Y && temp.X < p.turnPoint.X)
                     {
-                        for (int y = p.turnPoint.Y; y < temp.Y; y--)
+                        for (int x = p.turnPoint.X; x >= temp.X; x--)
                         {
-                            myStack.Push(new Point(temp.X, y));
+                            myStack.Push(new Point(x, temp.Y));
                         }
                     }
 
@@ -183,9 +182,25 @@ namespace TestFN2.Business
                     }
                 }
 
+                if (temp.X == head.X && temp.Y > head.Y)
+                {
+                    for (int y = head.Y; y < temp.Y; y++)
+                    {
+                        myStack.Push(new Point(temp.X, y));
+                    }
+                }
+
                 if (temp.Y == head.Y && temp.X < head.X)
                 {
                     for (int x = head.X; x > temp.X; x--)
+                    {
+                        myStack.Push(new Point(x, temp.Y));
+                    }
+                }
+
+                if (temp.Y == head.Y && temp.X > head.X)
+                {
+                    for (int x = head.X; x < temp.X; x++)
                     {
                         myStack.Push(new Point(x, temp.Y));
                     }
