@@ -39,6 +39,14 @@ namespace TestFN2
 
             Stack<Point> snakePoints = snake.returnSnakePoints();
 
+            if(snakePoints == null)
+            {
+                timer1.Stop();
+
+                MessageBox.Show("YOU LOST");
+                return;
+            }
+
             foreach (Point point in snakePoints)
             {
                 tableLayoutPanel1.GetControlFromPosition(point.Y, point.X).BackColor = Color.Black;

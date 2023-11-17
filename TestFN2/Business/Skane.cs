@@ -22,7 +22,7 @@ namespace TestFN2.Business
 
         public Skane() { 
             
-            head = new Point(9, 0);
+            head = new Point(17 , 0);
             tail = new Point(0, 0);
             headDirection = Directions.DOWN;
             tailDirection = Directions.DOWN;
@@ -174,6 +174,11 @@ namespace TestFN2.Business
                     temp = p.turnPoint;
                 }
 
+                if(checkColision())
+                {
+                    return null;
+                }
+
                 if (temp.X == head.X && temp.Y < head.Y)
                 {
                     for (int y = head.Y; y > temp.Y; y--)
@@ -208,9 +213,20 @@ namespace TestFN2.Business
 
             }
 
+            
             return myStack;
         }
 
+        private bool checkColision()
+        {
+            bool check = false;
+            foreach (var item in myStack)
+            {
+                if (item.X == head.X && item.Y == head.Y) check = true; continue;
+                
+            }
+            return check;
+        }
 
 
     }
