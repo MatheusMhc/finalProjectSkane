@@ -34,39 +34,8 @@ namespace TestFN2
             }
 
 
-            if (snake.headDirection == Directions.RIGHT)
-            {
-                Point point = new Point(snake.head.X, snake.head.Y + 1);
-                Point point2 = new Point(snake.tail.X, snake.tail.Y + 1);
-                snake.headDirection = Directions.RIGHT;
-                snake.head = point;
-                snake.tail = point2;
-            }
-
-            if (snake.headDirection == Directions.DOWN)
-            {
-                Point point = new Point(snake.head.X + 1, snake.head.Y);
-                Point point2 = new Point(snake.tail.X, snake.tail.Y + 1);
-                snake.headDirection = Directions.DOWN;
-                snake.head = point;
-                snake.tail = point2;
-            }
-            if (snake.headDirection == Directions.LEFT)
-            {
-                Point point = new Point(snake.head.X, snake.head.Y - 1);
-                Point point2 = new Point(snake.tail.X, snake.tail.Y - 1);
-                snake.headDirection = Directions.LEFT;
-                snake.head = point;
-                snake.tail = point2;
-            }
-            if (snake.headDirection == Directions.UP)
-            {
-                Point point = new Point(snake.head.X - 1, snake.head.Y);
-                Point point2 = new Point(snake.tail.X - 1, snake.tail.Y);
-                snake.headDirection = Directions.UP;
-                snake.head = point;
-                snake.tail = point2;
-            }
+            snake.test();
+            snake.test2();
 
             Stack<Point> snakePoints = snake.returnSnakePoints();
 
@@ -91,19 +60,19 @@ namespace TestFN2
             switch (e.KeyCode)
             {
                 case Keys.Left:
-                    //snake.turnPoint.Add(new Point(snake.head.X, snake.head.Y));
+                    snake.turnPoint.Add(new TurnPoint(new Point(snake.head.X, snake.head.Y), Directions.LEFT, snake.tailDirection));
                     snake.headDirection = Directions.LEFT;
                     break;
                 case Keys.Right:
-                    //snake.turnPoint.Add(new Point(snake.head.X, snake.head.Y));
+                    snake.turnPoint.Add(new TurnPoint(new Point(snake.head.X, snake.head.Y), Directions.RIGHT, snake.tailDirection));
                     snake.headDirection = Directions.RIGHT;
                     break;
                 case Keys.Up:
-                    //snake.turnPoint.Add(new Point(snake.head.X, snake.head.Y));
+                    snake.turnPoint.Add(new TurnPoint(new Point(snake.head.X, snake.head.Y), Directions.UP, snake.tailDirection));
                     snake.headDirection = Directions.UP;
                     break;
                 case Keys.Down:
-                    snake.turnPoint.Add(new Point(snake.head.X, snake.head.Y));
+                    snake.turnPoint.Add(new TurnPoint(new Point(snake.head.X, snake.head.Y), Directions.DOWN, snake.tailDirection));
                     snake.headDirection = Directions.DOWN;
                     break;
             }

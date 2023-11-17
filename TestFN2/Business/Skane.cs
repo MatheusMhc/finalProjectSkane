@@ -9,32 +9,93 @@ namespace TestFN2.Business
     internal class Skane
     {
         public Point head { get; set; }
+
         public Point tail { get; set; }
 
-        public List<Point> turnPoint { get; set; } 
+        public List<TurnPoint> turnPoint { get; set; } 
 
         public Directions headDirection { get; set; }
+
+        public Directions tailDirection { get; set; }
 
         Stack<Point> myStack;
 
         public Skane() { 
             
-            head = new Point(0, 3);
+            head = new Point(3, 0);
             tail = new Point(0, 0);
-            headDirection = Directions.RIGHT;
-            turnPoint = new List<Point>();
+            headDirection = Directions.DOWN;
+            tailDirection = Directions.DOWN;
+            turnPoint = new List<TurnPoint>();
+        }
+
+        public void test()
+        {
+            if (this.headDirection == Directions.RIGHT)
+            {
+                Point point = new Point(this.head.X, this.head.Y + 1);
+                this.headDirection = Directions.RIGHT;
+                this.head = point;
+            }
+
+            if (this.headDirection == Directions.DOWN)
+            {
+                Point point = new Point(this.head.X + 1, this.head.Y);
+                this.headDirection = Directions.DOWN;
+                this.head = point;
+            }
+            if (this.headDirection == Directions.LEFT)
+            {
+                Point point = new Point(this.head.X, this.head.Y - 1);
+                this.headDirection = Directions.LEFT;
+                this.head = point;
+            }
+            if (this.headDirection == Directions.UP)
+            {
+                Point point = new Point(this.head.X - 1, this.head.Y);
+                this.headDirection = Directions.UP;
+                this.head = point;
+            }
+        }
+
+        public void test2()
+        {
+            if (this.tailDirection == Directions.RIGHT)
+            {
+                Point point = new Point(this.tail.X, this.tail.Y + 1);
+                this.tailDirection = Directions.RIGHT;
+                this.tail = point;
+            }
+
+            if (this.tailDirection == Directions.DOWN)
+            {
+                Point point = new Point(this.tail.X + 1, this.tail.Y);
+                this.tailDirection = Directions.DOWN;
+                this.tail = point;
+            }
+            if (this.tailDirection == Directions.LEFT)
+            {
+                Point point = new Point(this.tail.X, this.tail.Y - 1);
+                this.tailDirection = Directions.LEFT;
+                this.tail = point;
+            }
+            if (this.tailDirection == Directions.UP)
+            {
+                Point point = new Point(this.tail.X - 1, this.tail.Y);
+                this.tailDirection = Directions.UP;
+                this.tail = point;
+            }
         }
 
         public Stack<Point> returnSnakePoints()
         {
-            //myStack.Push(tail);
             myStack = new Stack<Point>();
 
             if(turnPoint.Count == 0)
             {
                 if(head.X == tail.X && head.Y > tail.Y)
                 {
-                    for(int y =  tail.Y; y < head.Y; y++)
+                    for(int y =  tail.Y; y <= head.Y; y++)
                     {
                         myStack.Push(new Point(head.X, y));
                     }
@@ -42,59 +103,76 @@ namespace TestFN2.Business
 
                 if (head.X == tail.X && head.Y < tail.Y)
                 {
-                    for (int y = tail.Y; y > head.Y ; y--)
+                    for (int y = tail.Y; y >= head.Y ; y--)
                     {
                         myStack.Push(new Point(head.X, y));
                     }
                 }
 
-                myStack.Push(head);
+                if (head.Y == tail.Y && head.X > tail.X)
+                {
+                    for (int x = tail.X; x <= head.X; x++)
+                    {
+                        myStack.Push(new Point(x, tail.Y));
+                    }
+                }
+
+                if (head.Y == tail.Y && head.X < tail.X)
+                {
+                    for (int x = tail.X; x >= head.X; x--)
+                    {
+                        myStack.Push(new Point(x, tail.Y));
+                    }
+                }
+
+                //myStack.Push(head);
             }
             else
             {
                 Point temp = tail;
-                Point first = turnPoint.First();
-                if(tail.X == first.X && tail.Y == first.Y)
+                TurnPoint first = turnPoint.First();
+                if(tail.X == first.turnPoint.X && tail.Y == first.turnPoint.Y)
                 {
                     turnPoint.Remove(first);
-                    myStack.Push(new Point(tail.X, tail.Y));
+                    tailDirection = first.headDirection;
+                    myStack.Push(tail);
                 }
 
-                foreach (Point p in turnPoint)
+                foreach (TurnPoint p in turnPoint)
                 {
-                    if (temp.X == p.X && temp.Y > p.Y)
+                    if (temp.X == p.turnPoint.X && temp.Y > p.turnPoint.Y)
                     {
-                        for (int y = p.Y; y < temp.Y; y++)
+                        for (int y = p.turnPoint.Y; y < temp.Y; y++)
                         {
                             myStack.Push(new Point(temp.X, y));
                         }
                     }
 
-                    if (temp.X == p.X && temp.Y < p.Y)
+                    if (temp.X == p.turnPoint.X && temp.Y < p.turnPoint.Y)
                     {
-                        for (int y = p.Y; y >= temp.Y; y--)
+                        for (int y = p.turnPoint.Y; y >= temp.Y; y--)
                         {
                             myStack.Push(new Point(temp.X, y));
                         }
                     }
 
-                    if (temp.Y == p.Y && temp.X > p.X)
+                    if (temp.Y == p.turnPoint.Y && temp.X > p.turnPoint.X)
                     {
-                        for (int x = p.X; x < temp.X; x++)
+                        for (int x = p.turnPoint.X; x < temp.X; x++)
                         {
                             myStack.Push(new Point(x, temp.Y));
                         }
                     }
 
-                    if (temp.Y == p.Y && temp.X < p.X)
+                    if (temp.Y == p.turnPoint.Y && temp.X < p.turnPoint.X)
                     {
-                        for (int y = p.Y; y < temp.Y; y--)
+                        for (int y = p.turnPoint.Y; y < temp.Y; y--)
                         {
                             myStack.Push(new Point(temp.X, y));
                         }
                     }
 
-                    temp = p;
+                    temp = p.turnPoint;
                 }
 
                 if (temp.X == head.X && temp.Y < head.Y)
