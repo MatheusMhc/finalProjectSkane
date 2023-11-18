@@ -18,6 +18,7 @@ namespace TestFN2
                 for (int j = 0; j < tableLayoutPanel1.ColumnCount; j++)
                 {
                     Panel panel = new Panel();
+                    panel.Margin = new Padding(0);
                     tableLayoutPanel1.Controls.Add(panel, j, i);
                 }
             }
@@ -39,7 +40,7 @@ namespace TestFN2
 
             Stack<Point> snakePoints = snake.returnSnakePoints();
 
-            if(snakePoints == null)
+            if (snakePoints == null)
             {
                 timer1.Stop();
 
