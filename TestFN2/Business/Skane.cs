@@ -22,7 +22,7 @@ namespace TestFN2.Business
 
         public Skane() { 
             
-            head = new Point(17 , 0);
+            head = new Point(2 , 0);
             tail = new Point(0, 0);
             headDirection = Directions.DOWN;
             tailDirection = Directions.DOWN;

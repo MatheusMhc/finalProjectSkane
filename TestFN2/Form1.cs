@@ -44,21 +44,22 @@ namespace TestFN2
             {
                 timer1.Stop();
 
-                MessageBox.Show("YOU LOST");
+                MessageBox.Show("YOU LOSE");
                 return;
             }
 
             foreach (Point point in snakePoints)
             {
+
+                if (point.X == tableLayoutPanel1.RowCount || point.X < 0 || point.Y == tableLayoutPanel1.ColumnCount || point.Y < 0)
+                {
+                    timer1.Stop();
+                    MessageBox.Show("Test");
+                    return;
+                }
                 tableLayoutPanel1.GetControlFromPosition(point.Y, point.X).BackColor = Color.Black;
             }
-            /*for (int i = 0; i < tableLayoutPanel1.RowCount; i++)
-            {
-                for (int j = 0; j < tableLayoutPanel1.ColumnCount; j++)
-                {
-                    tableLayoutPanel1.GetControlFromPosition(a.Y, a.X).BackColor = Color.Black;
-                }
-            }*/
+
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
