@@ -8,6 +8,7 @@ namespace TestFN2
     {
 
         bool isKeyDown = false;
+        int score = 0;
 
         public Form1()
         {
@@ -19,13 +20,13 @@ namespace TestFN2
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            for (int i = 0; i < tableLayoutPanel1.RowCount; i++)
+            for (int i = 0; i < tableGridGameSkane.RowCount; i++)
             {
-                for (int j = 0; j < tableLayoutPanel1.ColumnCount; j++)
+                for (int j = 0; j < tableGridGameSkane.ColumnCount; j++)
                 {
                     Panel panel = new Panel();
                     panel.Margin = new Padding(0);
-                    tableLayoutPanel1.Controls.Add(panel, j, i);
+                    tableGridGameSkane.Controls.Add(panel, j, i);
                 }
             }
         }
@@ -33,15 +34,18 @@ namespace TestFN2
         private void timer1_Tick(object sender, EventArgs e)
         {
 
-            for (int i = 0; i < tableLayoutPanel1.RowCount; i++)
+            for (int i = 0; i < tableGridGameSkane.RowCount; i++)
             {
-                for (int j = 0; j < tableLayoutPanel1.ColumnCount; j++)
+                for (int j = 0; j < tableGridGameSkane.ColumnCount; j++)
                 {
-                    tableLayoutPanel1.GetControlFromPosition(j, i).BackColor = new Panel().BackColor;
+                    tableGridGameSkane.GetControlFromPosition(j, i).BackColor = new Panel().BackColor;
                 }
             }
 
-            food.createRandomFood(tableLayoutPanel1.RowCount, tableLayoutPanel1.ColumnCount);
+            do
+            {
+                food.createRandomFood(tableGridGameSkane.RowCount, tableGridGameSkane.ColumnCount, snake.returnSnakePoints());
+            } while (!food.created);
 
 
             snake.moveHeadDirection();
@@ -49,12 +53,11 @@ namespace TestFN2
 
             Stack<Point> snakePoints = snake.returnSnakePoints();
 
-
-            if (snakePoints == null)
+            if (snake.wasIBitten())
             {
-                timer1.Stop();
+                timeTic.Stop();
 
-                if (MessageBox.Show("Are you sure?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("Are you svvcvure?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     System.Windows.Forms.Application.Restart();
                     Environment.Exit(0);
@@ -67,18 +70,21 @@ namespace TestFN2
                 return;
             }
 
+
             if (food.wasEaten(snake.returnSnakePoints()))
             {
                 snake.increaseMySize();
+                score = score + 1;
+                lblScoreValue.Text = score.ToString();
                 food.created = false;
             }
 
             foreach (Point point in snakePoints)
             {
 
-                if (point.X == tableLayoutPanel1.RowCount || point.X < 0 || point.Y == tableLayoutPanel1.ColumnCount || point.Y < 0)
+                if (point.X == tableGridGameSkane.RowCount || point.X < 0 || point.Y == tableGridGameSkane.ColumnCount || point.Y < 0)
                 {
-                    timer1.Stop();
+                    timeTic.Stop();
                     if (MessageBox.Show("Are you sure?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         System.Windows.Forms.Application.Restart();
@@ -91,9 +97,9 @@ namespace TestFN2
                     return;
                 }
 
-                tableLayoutPanel1.GetControlFromPosition(point.Y, point.X).BackColor = Color.Black;
+                tableGridGameSkane.GetControlFromPosition(point.Y, point.X).BackColor = Color.Black;
             }
-            tableLayoutPanel1.GetControlFromPosition(food.point.Y, food.point.X).BackColor = Color.Blue;
+            tableGridGameSkane.GetControlFromPosition(food.point.Y, food.point.X).BackColor = Color.Blue;
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -132,6 +138,20 @@ namespace TestFN2
         private void Form1_KeyUp(object sender, KeyEventArgs e)
         {
             isKeyDown = false;
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+            // I got this code from here https://itecnote.com/tecnote/c-set-panel-border-thickness-in-c-winform/ and it worked
+            int thickness = 3;
+            int halfThickness = thickness / 2;
+            using (Pen p = new Pen(Color.Black, thickness))
+            {
+                e.Graphics.DrawRectangle(p, new Rectangle(halfThickness,
+                                                          halfThickness,
+                                                          painelWall.ClientSize.Width - thickness,
+                                                          painelWall.ClientSize.Height - thickness));
+            }
         }
     }
 }

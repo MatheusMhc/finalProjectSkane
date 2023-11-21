@@ -29,136 +29,177 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            tableLayoutPanel1 = new TableLayoutPanel();
-            timer1 = new System.Windows.Forms.Timer(components);
-            panel1 = new Panel();
+            tableGridGameSkane = new TableLayoutPanel();
+            timeTic = new System.Windows.Forms.Timer(components);
+            painelWall = new Panel();
+            groupBox1 = new GroupBox();
+            lblScoreValue = new Label();
+            lblScoreName = new Label();
+            groupBox1.SuspendLayout();
             SuspendLayout();
             // 
-            // tableLayoutPanel1
+            // tableGridGameSkane
             // 
-            tableLayoutPanel1.BackColor = SystemColors.Control;
-            tableLayoutPanel1.BackgroundImageLayout = ImageLayout.Center;
-            tableLayoutPanel1.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single;
-            tableLayoutPanel1.ColumnCount = 20;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.Location = new Point(23, 12);
-            tableLayoutPanel1.Margin = new Padding(0);
-            tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 20;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.Size = new Size(420, 420);
-            tableLayoutPanel1.TabIndex = 0;
+            tableGridGameSkane.BackColor = SystemColors.Control;
+            tableGridGameSkane.BackgroundImageLayout = ImageLayout.Center;
+            tableGridGameSkane.ColumnCount = 40;
+            tableGridGameSkane.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.Location = new Point(23, 12);
+            tableGridGameSkane.Margin = new Padding(0);
+            tableGridGameSkane.Name = "tableGridGameSkane";
+            tableGridGameSkane.RowCount = 40;
+            tableGridGameSkane.RowStyles.Add(new RowStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.RowStyles.Add(new RowStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.RowStyles.Add(new RowStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.RowStyles.Add(new RowStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.RowStyles.Add(new RowStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.RowStyles.Add(new RowStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.RowStyles.Add(new RowStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.RowStyles.Add(new RowStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.RowStyles.Add(new RowStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.RowStyles.Add(new RowStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.RowStyles.Add(new RowStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.RowStyles.Add(new RowStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.RowStyles.Add(new RowStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.RowStyles.Add(new RowStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.RowStyles.Add(new RowStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.RowStyles.Add(new RowStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.RowStyles.Add(new RowStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.RowStyles.Add(new RowStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.RowStyles.Add(new RowStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.RowStyles.Add(new RowStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.RowStyles.Add(new RowStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.RowStyles.Add(new RowStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.RowStyles.Add(new RowStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.RowStyles.Add(new RowStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.RowStyles.Add(new RowStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.RowStyles.Add(new RowStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.RowStyles.Add(new RowStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.RowStyles.Add(new RowStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.RowStyles.Add(new RowStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.RowStyles.Add(new RowStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.RowStyles.Add(new RowStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.RowStyles.Add(new RowStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.RowStyles.Add(new RowStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.RowStyles.Add(new RowStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.RowStyles.Add(new RowStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.RowStyles.Add(new RowStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.RowStyles.Add(new RowStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.RowStyles.Add(new RowStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.RowStyles.Add(new RowStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.RowStyles.Add(new RowStyle(SizeType.Absolute, 10F));
+            tableGridGameSkane.Size = new Size(400, 400);
+            tableGridGameSkane.TabIndex = 0;
             // 
-            // timer1
+            // timeTic
             // 
-            timer1.Enabled = true;
-            timer1.Tick += timer1_Tick;
+            timeTic.Enabled = true;
+            timeTic.Tick += timer1_Tick;
             // 
-            // panel1
+            // painelWall
             // 
-            panel1.BorderStyle = BorderStyle.FixedSingle;
-            panel1.Location = new Point(21, 11);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(424, 424);
-            panel1.TabIndex = 1;
+            painelWall.Location = new Point(20, 9);
+            painelWall.Name = "painelWall";
+            painelWall.Size = new Size(406, 406);
+            painelWall.TabIndex = 1;
+            painelWall.Paint += panel1_Paint;
+            // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(lblScoreValue);
+            groupBox1.Controls.Add(lblScoreName);
+            groupBox1.Font = new Font("Snap ITC", 20F, FontStyle.Bold, GraphicsUnit.Point);
+            groupBox1.Location = new Point(483, 9);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(288, 218);
+            groupBox1.TabIndex = 2;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Snake Game";
+            // 
+            // lblScoreValue
+            // 
+            lblScoreValue.AutoSize = true;
+            lblScoreValue.ForeColor = Color.Blue;
+            lblScoreValue.Location = new Point(141, 48);
+            lblScoreValue.Name = "lblScoreValue";
+            lblScoreValue.Size = new Size(39, 35);
+            lblScoreValue.TabIndex = 1;
+            lblScoreValue.Text = "0";
+            // 
+            // lblScoreName
+            // 
+            lblScoreName.AutoSize = true;
+            lblScoreName.Location = new Point(16, 48);
+            lblScoreName.Name = "lblScoreName";
+            lblScoreName.Size = new Size(119, 35);
+            lblScoreName.TabIndex = 0;
+            lblScoreName.Text = "Score:";
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(784, 448);
-            Controls.Add(tableLayoutPanel1);
-            Controls.Add(panel1);
+            ClientSize = new Size(784, 491);
+            Controls.Add(groupBox1);
+            Controls.Add(tableGridGameSkane);
+            Controls.Add(painelWall);
             Name = "Form1";
+            Padding = new Padding(10);
             Text = "Form1";
             Load += Form1_Load;
             KeyDown += Form1_KeyDown;
             KeyUp += Form1_KeyUp;
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Timer timer1;
-        private Panel panel1;
+        private TableLayoutPanel tableGridGameSkane;
+        private System.Windows.Forms.Timer timeTic;
+        private Panel painelWall;
+        private GroupBox groupBox1;
+        private Label lblScoreValue;
+        private Label lblScoreName;
     }
 }

@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,11 +20,10 @@ namespace TestFN2.Business
 
         public Directions tailDirection { get; set; }
 
-        Stack<Point> myStack;
+        Stack<Point> stackSnake;
 
         public Snake() { 
             
-
             head = new Point(12 , 0);
             tail = new Point(0, 0);
             headDirection = Directions.DOWN;
@@ -132,7 +133,7 @@ namespace TestFN2.Business
 
         public Stack<Point> returnSnakePoints()
         {
-            myStack = new Stack<Point>();
+            stackSnake = new Stack<Point>();
 
             if(turnPoints.Count == 0)
             {
@@ -140,7 +141,7 @@ namespace TestFN2.Business
                 {
                     for(int y =  tail.Y; y <= head.Y; y++)
                     {
-                        myStack.Push(new Point(head.X, y));
+                        stackSnake.Push(new Point(head.X, y));
                     }
                 }
 
@@ -148,7 +149,7 @@ namespace TestFN2.Business
                 {
                     for (int y = tail.Y; y >= head.Y ; y--)
                     {
-                        myStack.Push(new Point(head.X, y));
+                        stackSnake.Push(new Point(head.X, y));
                     }
                 }
 
@@ -156,7 +157,7 @@ namespace TestFN2.Business
                 {
                     for (int x = tail.X; x <= head.X; x++)
                     {
-                        myStack.Push(new Point(x, tail.Y));
+                        stackSnake.Push(new Point(x, tail.Y));
                     }
                 }
 
@@ -164,7 +165,7 @@ namespace TestFN2.Business
                 {
                     for (int x = tail.X; x >= head.X; x--)
                     {
-                        myStack.Push(new Point(x, tail.Y));
+                        stackSnake.Push(new Point(x, tail.Y));
                     }
                 }
 
@@ -177,7 +178,7 @@ namespace TestFN2.Business
                 {
                     turnPoints.Remove(first);
                     tailDirection = first.headDirection;
-                    myStack.Push(tail);
+                    stackSnake.Push(tail);
                 }
 
                 foreach (TurnPoint p in turnPoints)
@@ -186,7 +187,7 @@ namespace TestFN2.Business
                     {
                         for (int y = p.turnPoint.Y; y <= temp.Y; y++)
                         {
-                            myStack.Push(new Point(temp.X, y));
+                            stackSnake.Push(new Point(temp.X, y));
                         }
                     }
 
@@ -194,7 +195,7 @@ namespace TestFN2.Business
                     {
                         for (int y = p.turnPoint.Y; y >= temp.Y; y--)
                         {
-                            myStack.Push(new Point(temp.X, y));
+                            stackSnake.Push(new Point(temp.X, y));
                         }
                     }
 
@@ -202,7 +203,7 @@ namespace TestFN2.Business
                     {
                         for (int x = p.turnPoint.X; x <= temp.X; x++)
                         {
-                            myStack.Push(new Point(x, temp.Y));
+                            stackSnake.Push(new Point(x, temp.Y));
                         }
                     }
 
@@ -210,7 +211,7 @@ namespace TestFN2.Business
                     {
                         for (int x = p.turnPoint.X; x >= temp.X; x--)
                         {
-                            myStack.Push(new Point(x, temp.Y));
+                            stackSnake.Push(new Point(x, temp.Y));
                         }
                     }
 
@@ -221,7 +222,7 @@ namespace TestFN2.Business
                 {
                     for (int y = head.Y; y > temp.Y; y--)
                     {
-                        myStack.Push(new Point(temp.X, y));
+                        stackSnake.Push(new Point(temp.X, y));
                     }
                 }
 
@@ -229,7 +230,7 @@ namespace TestFN2.Business
                 {
                     for (int y = head.Y; y < temp.Y; y++)
                     {
-                        myStack.Push(new Point(temp.X, y));
+                        stackSnake.Push(new Point(temp.X, y));
                     }
                 }
 
@@ -237,7 +238,7 @@ namespace TestFN2.Business
                 {
                     for (int x = head.X; x > temp.X; x--)
                     {
-                        myStack.Push(new Point(x, temp.Y));
+                        stackSnake.Push(new Point(x, temp.Y));
                     }
                 }
 
@@ -245,27 +246,24 @@ namespace TestFN2.Business
                 {
                     for (int x = head.X; x < temp.X; x++)
                     {
-                        myStack.Push(new Point(x, temp.Y));
+                        stackSnake.Push(new Point(x, temp.Y));
                     }
                 }
 
             }
 
             
-            return myStack;
+            return stackSnake;
         }
 
-        public bool checkColision()
+        public bool wasIBitten()
         {
-            bool check = false;
-            foreach (var item in myStack)
+            int check = 0;
+            foreach (var item in stackSnake)
             {
-                if (item.X == head.X && item.Y == head.Y) check = true; continue;
-                
+                if (item.X == head.X && item.Y == head.Y) check++; continue;
             }
-            return check;
+            return check>1;
         }
-
-
     }
 }

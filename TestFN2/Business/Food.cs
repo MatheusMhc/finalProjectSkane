@@ -21,7 +21,7 @@ namespace TestFN2.Business
             this._created = false;
         }
 
-        public void createRandomFood(int maximumX, int maximumY)
+        public void createRandomFood(int maximumX, int maximumY, Stack<Point> snake)
         {
             if(!created)
             {
@@ -29,6 +29,11 @@ namespace TestFN2.Business
                 int a = rn.Next(0, maximumX);
                 int b = rn.Next(0, maximumY);
                 this.point = new Point(a, b);
+
+                if(snake.Contains(this.point))
+                {
+                    return;
+                }
                 this.created = true;
             }
         }
