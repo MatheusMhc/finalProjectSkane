@@ -29,7 +29,7 @@ namespace TestFN2.Business
             turnPoint = new List<TurnPoint>();
         }
 
-        public void test()
+        public void moveHeadDirection()
         {
             if (this.headDirection == Directions.RIGHT)
             {
@@ -58,7 +58,7 @@ namespace TestFN2.Business
             }
         }
 
-        public void test2()
+        public void moveTailDirection()
         {
             if (this.tailDirection == Directions.RIGHT)
             {

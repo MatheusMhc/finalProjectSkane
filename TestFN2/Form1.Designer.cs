@@ -33,15 +33,17 @@
             tableLayoutPanel1 = new TableLayoutPanel();
             timer1 = new System.Windows.Forms.Timer(components);
             panel1 = new Panel();
-            tableLayoutPanel2 = new TableLayoutPanel();
-            panel2 = new Panel();
+            tableGridSnakeGame = new TableLayoutPanel();
+            borderWall = new Panel();
             panel3 = new Panel();
             panel4 = new Panel();
-            tableLayoutPanel2.SuspendLayout();
+            tableGridSnakeGame.SuspendLayout();
             SuspendLayout();
             // 
             // tableLayoutPanel1
             // 
+            tableLayoutPanel1.BackColor = SystemColors.Control;
+            tableLayoutPanel1.BackgroundImageLayout = ImageLayout.Center;
             tableLayoutPanel1.ColumnCount = 20;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
@@ -146,30 +148,30 @@
             // 
             // tableLayoutPanel2
             // 
-            tableLayoutPanel2.ColumnCount = 3;
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 97F));
-            tableLayoutPanel2.Controls.Add(panel2, 0, 0);
-            tableLayoutPanel2.Controls.Add(panel3, 1, 0);
-            tableLayoutPanel2.Controls.Add(panel4, 2, 0);
-            tableLayoutPanel2.Location = new Point(494, 191);
-            tableLayoutPanel2.Margin = new Padding(0);
-            tableLayoutPanel2.Name = "tableLayoutPanel2";
-            tableLayoutPanel2.RowCount = 1;
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.Size = new Size(290, 100);
-            tableLayoutPanel2.TabIndex = 2;
+            tableGridSnakeGame.ColumnCount = 3;
+            tableGridSnakeGame.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableGridSnakeGame.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableGridSnakeGame.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 97F));
+            tableGridSnakeGame.Controls.Add(borderWall, 0, 0);
+            tableGridSnakeGame.Controls.Add(panel3, 1, 0);
+            tableGridSnakeGame.Controls.Add(panel4, 2, 0);
+            tableGridSnakeGame.Location = new Point(494, 191);
+            tableGridSnakeGame.Margin = new Padding(0);
+            tableGridSnakeGame.Name = "tableLayoutPanel2";
+            tableGridSnakeGame.RowCount = 1;
+            tableGridSnakeGame.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableGridSnakeGame.Size = new Size(290, 100);
+            tableGridSnakeGame.TabIndex = 2;
             // 
             // panel2
             // 
-            panel2.BackgroundImage = (Image)resources.GetObject("panel2.BackgroundImage");
-            panel2.BackgroundImageLayout = ImageLayout.Zoom;
-            panel2.Location = new Point(0, 0);
-            panel2.Margin = new Padding(0);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(96, 100);
-            panel2.TabIndex = 0;
+            borderWall.BackgroundImage = (Image)resources.GetObject("panel2.BackgroundImage");
+            borderWall.BackgroundImageLayout = ImageLayout.Zoom;
+            borderWall.Location = new Point(0, 0);
+            borderWall.Margin = new Padding(0);
+            borderWall.Name = "panel2";
+            borderWall.Size = new Size(96, 100);
+            borderWall.TabIndex = 0;
             // 
             // panel3
             // 
@@ -196,14 +198,15 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(784, 448);
-            Controls.Add(tableLayoutPanel2);
+            Controls.Add(tableGridSnakeGame);
             Controls.Add(tableLayoutPanel1);
             Controls.Add(panel1);
             Name = "Form1";
             Text = "Form1";
             Load += Form1_Load;
             KeyDown += Form1_KeyDown;
-            tableLayoutPanel2.ResumeLayout(false);
+            KeyUp += Form1_KeyUp;
+            tableGridSnakeGame.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -212,8 +215,8 @@
         private TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Timer timer1;
         private Panel panel1;
-        private TableLayoutPanel tableLayoutPanel2;
-        private Panel panel2;
+        private TableLayoutPanel tableGridSnakeGame;
+        private Panel borderWall;
         private Panel panel3;
         private Panel panel4;
     }

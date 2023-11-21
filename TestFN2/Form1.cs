@@ -4,6 +4,8 @@ namespace TestFN2
 {
     public partial class Form1 : Form
     {
+
+        bool isKeyDown = false;
         public Form1()
         {
             InitializeComponent();
@@ -35,8 +37,9 @@ namespace TestFN2
             }
 
 
-            snake.test();
-            snake.test2();
+
+            snake.moveHeadDirection();
+            snake.moveTailDirection();
 
             Stack<Point> snakePoints = snake.returnSnakePoints();
 
@@ -62,8 +65,13 @@ namespace TestFN2
 
         }
 
+
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
+            if (isKeyDown)
+                return;
+            isKeyDown = true;
+
 
             if (e.KeyCode == Keys.Control) return;
 
@@ -90,6 +98,11 @@ namespace TestFN2
                     snake.headDirection = Directions.DOWN;
                     break;
             }
+        }
+
+        private void Form1_KeyUp(object sender, KeyEventArgs e)
+        {
+            isKeyDown = false;
         }
     }
 }
