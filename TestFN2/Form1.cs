@@ -6,6 +6,7 @@ namespace TestFN2
     {
 
         bool isKeyDown = false;
+
         public Form1()
         {
             InitializeComponent();
@@ -28,6 +29,7 @@ namespace TestFN2
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+
             for (int i = 0; i < tableLayoutPanel1.RowCount; i++)
             {
                 for (int j = 0; j < tableLayoutPanel1.ColumnCount; j++)
@@ -65,13 +67,11 @@ namespace TestFN2
 
         }
 
-
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             if (isKeyDown)
                 return;
             isKeyDown = true;
-
 
             if (e.KeyCode == Keys.Control) return;
 
@@ -79,22 +79,22 @@ namespace TestFN2
             {
                 case Keys.Left:
                     if (snake.headDirection == Directions.RIGHT) return;
-                    snake.turnPoint.Add(new TurnPoint(new Point(snake.head.X, snake.head.Y), Directions.LEFT, snake.tailDirection));
+                    snake.addTurnPointIfNotExist(new TurnPoint(new Point(snake.head.X, snake.head.Y), Directions.LEFT, snake.tailDirection));
                     snake.headDirection = Directions.LEFT;
                     break;
                 case Keys.Right:
                     if (snake.headDirection == Directions.LEFT) return;
-                    snake.turnPoint.Add(new TurnPoint(new Point(snake.head.X, snake.head.Y), Directions.RIGHT, snake.tailDirection));
+                    snake.addTurnPointIfNotExist(new TurnPoint(new Point(snake.head.X, snake.head.Y), Directions.RIGHT, snake.tailDirection));
                     snake.headDirection = Directions.RIGHT;
                     break;
                 case Keys.Up:
                     if (snake.headDirection == Directions.DOWN) return;
-                    snake.turnPoint.Add(new TurnPoint(new Point(snake.head.X, snake.head.Y), Directions.UP, snake.tailDirection));
+                    snake.addTurnPointIfNotExist(new TurnPoint(new Point(snake.head.X, snake.head.Y), Directions.UP, snake.tailDirection));
                     snake.headDirection = Directions.UP;
                     break;
                 case Keys.Down:
                     if (snake.headDirection == Directions.UP) return;
-                    snake.turnPoint.Add(new TurnPoint(new Point(snake.head.X, snake.head.Y), Directions.DOWN, snake.tailDirection));
+                    snake.addTurnPointIfNotExist(new TurnPoint(new Point(snake.head.X, snake.head.Y), Directions.DOWN, snake.tailDirection));
                     snake.headDirection = Directions.DOWN;
                     break;
             }

@@ -12,7 +12,7 @@ namespace TestFN2.Business
 
         public Point tail { get; set; }
 
-        public List<TurnPoint> turnPoint { get; set; } 
+        public List<TurnPoint> turnPoints { get; set; } 
 
         public Directions headDirection { get; set; }
 
@@ -26,7 +26,18 @@ namespace TestFN2.Business
             tail = new Point(0, 0);
             headDirection = Directions.DOWN;
             tailDirection = Directions.DOWN;
-            turnPoint = new List<TurnPoint>();
+            turnPoints = new List<TurnPoint>();
+        }
+
+        public void addTurnPointIfNotExist(TurnPoint turnPoint)
+        {
+            int a = turnPoint.contains(turnPoints);
+            if (a < 0) {
+                this.turnPoints.Add(turnPoint);
+                return;
+            }
+
+            turnPoints.Insert(a, turnPoint);
         }
 
         public void moveHeadDirection()
@@ -91,7 +102,7 @@ namespace TestFN2.Business
         {
             myStack = new Stack<Point>();
 
-            if(turnPoint.Count == 0)
+            if(turnPoints.Count == 0)
             {
                 if(head.X == tail.X && head.Y > tail.Y)
                 {
@@ -129,15 +140,15 @@ namespace TestFN2.Business
             else
             {
                 Point temp = tail;
-                TurnPoint first = turnPoint.First();
+                TurnPoint first = turnPoints.First();
                 if(tail.X == first.turnPoint.X && tail.Y == first.turnPoint.Y)
                 {
-                    turnPoint.Remove(first);
+                    turnPoints.Remove(first);
                     tailDirection = first.headDirection;
                     myStack.Push(tail);
                 }
 
-                foreach (TurnPoint p in turnPoint)
+                foreach (TurnPoint p in turnPoints)
                 {
                     if (temp.X == p.turnPoint.X && temp.Y > p.turnPoint.Y)
                     {

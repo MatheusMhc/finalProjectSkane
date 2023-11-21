@@ -22,5 +22,19 @@ namespace TestFN2.Business
             this.turnPoint = point;
             this.headDirection = headDirec;
         }
+
+        public bool equals(TurnPoint other)
+        {
+            return this.turnPoint.X == other.turnPoint.X && this.turnPoint.Y == other.turnPoint.Y;
+        }
+
+        public int contains(List<TurnPoint> turnPoints)
+        {
+            foreach (TurnPoint tp in turnPoints)
+            {
+                if (tp.equals(this)) return turnPoints.IndexOf(tp);
+            }
+            return -1;
+        }
     }
 }
