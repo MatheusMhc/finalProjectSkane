@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TestFN2.Business
 {
-    internal class Skane
+    internal class Snake
     {
         public Point head { get; set; }
 
@@ -20,9 +20,10 @@ namespace TestFN2.Business
 
         Stack<Point> myStack;
 
-        public Skane() { 
+        public Snake() { 
             
-            head = new Point(2 , 0);
+
+            head = new Point(12 , 0);
             tail = new Point(0, 0);
             headDirection = Directions.DOWN;
             tailDirection = Directions.DOWN;
@@ -38,6 +39,37 @@ namespace TestFN2.Business
             }
 
             turnPoints.Insert(a, turnPoint);
+        }
+
+        public void increaseMySize()
+        {
+            if (this.tailDirection == Directions.RIGHT)
+            {
+                Point point = new Point(this.tail.X, this.tail.Y - 1);
+                this.tailDirection = Directions.RIGHT;
+                this.tail = point;
+            }
+
+            if (this.tailDirection == Directions.DOWN)
+            {
+                Point point = new Point(this.tail.X - 1, this.tail.Y);
+                this.tailDirection = Directions.DOWN;
+                this.tail = point;
+            }
+            if (this.tailDirection == Directions.LEFT)
+            {
+                Point point = new Point(this.tail.X, this.tail.Y + 1);
+                this.tailDirection = Directions.LEFT;
+                this.tail = point;
+            }
+            if (this.tailDirection == Directions.UP)
+            {
+                Point point = new Point(this.tail.X + 1, this.tail.Y);
+                this.tailDirection = Directions.UP;
+                this.tail = point;
+            }
+
+            returnSnakePoints();
         }
 
         public void moveHeadDirection()
@@ -185,11 +217,6 @@ namespace TestFN2.Business
                     temp = p.turnPoint;
                 }
 
-                if(checkColision())
-                {
-                    return null;
-                }
-
                 if (temp.X == head.X && temp.Y < head.Y)
                 {
                     for (int y = head.Y; y > temp.Y; y--)
@@ -228,7 +255,7 @@ namespace TestFN2.Business
             return myStack;
         }
 
-        private bool checkColision()
+        public bool checkColision()
         {
             bool check = false;
             foreach (var item in myStack)

@@ -1,4 +1,6 @@
+using System.Drawing;
 using TestFN2.Business;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace TestFN2
 {
@@ -12,7 +14,8 @@ namespace TestFN2
             InitializeComponent();
         }
 
-        Skane snake = new Skane();
+        Snake snake = new Snake();
+        Food food = new Food();
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -38,6 +41,7 @@ namespace TestFN2
                 }
             }
 
+            food.createRandomFood(tableLayoutPanel1.RowCount, tableLayoutPanel1.ColumnCount);
 
 
             snake.moveHeadDirection();
@@ -45,12 +49,28 @@ namespace TestFN2
 
             Stack<Point> snakePoints = snake.returnSnakePoints();
 
+
             if (snakePoints == null)
             {
                 timer1.Stop();
 
-                MessageBox.Show("YOU LOSE");
+                if (MessageBox.Show("Are you sure?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    System.Windows.Forms.Application.Restart();
+                    Environment.Exit(0);
+
+                }
+                else
+                {
+                    // user clicked no
+                }
                 return;
+            }
+
+            if (food.wasEaten(snake.returnSnakePoints()))
+            {
+                snake.increaseMySize();
+                food.created = false;
             }
 
             foreach (Point point in snakePoints)
@@ -59,12 +79,21 @@ namespace TestFN2
                 if (point.X == tableLayoutPanel1.RowCount || point.X < 0 || point.Y == tableLayoutPanel1.ColumnCount || point.Y < 0)
                 {
                     timer1.Stop();
-                    MessageBox.Show("Test");
+                    if (MessageBox.Show("Are you sure?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        System.Windows.Forms.Application.Restart();
+                        Environment.Exit(0);
+                    }
+                    else
+                    {
+                        // user clicked no
+                    }
                     return;
                 }
+
                 tableLayoutPanel1.GetControlFromPosition(point.Y, point.X).BackColor = Color.Black;
             }
-
+            tableLayoutPanel1.GetControlFromPosition(food.point.Y, food.point.X).BackColor = Color.Blue;
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)

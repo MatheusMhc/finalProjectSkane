@@ -124,7 +124,7 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.Size = new Size(400, 402);
+            tableLayoutPanel1.Size = new Size(420, 420);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // timer1
@@ -137,7 +137,7 @@
             panel1.BorderStyle = BorderStyle.FixedSingle;
             panel1.Location = new Point(21, 11);
             panel1.Name = "panel1";
-            panel1.Size = new Size(404, 404);
+            panel1.Size = new Size(424, 424);
             panel1.TabIndex = 1;
             // 
             // Form1
