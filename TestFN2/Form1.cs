@@ -17,13 +17,15 @@ namespace TestFN2
         public Form1(Menu menu, int interval)
         {
             InitializeComponent();
+            lblDoYouContinue.Visible = false;
+            lblYes.Visible = false;
+            lblNo.Visible = false;
             menu.loadingProgress.Visible = true;
             timeTic.Interval = interval;
             loadPanelOnGrid(menu);
-            
+
             menu.Hide();
         }
-
 
         Snake snake = new Snake();
         Food food = new Food();
@@ -67,8 +69,15 @@ namespace TestFN2
             if (snake.wasIBitten())
             {
                 timeTic.Stop();
+                tableGridGameSkane.Visible = false;
+                painelWall.Visible = false;
+                grpBoxScore.Visible = false;
+                picBoxYouDied.Visible = true;
+                lblDoYouContinue.Visible = true;
+                lblYes.Visible = true;
+                lblNo.Visible = true;
 
-                if (MessageBox.Show("Are you svvcvure?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+               /* if (MessageBox.Show("Are you svvcvure?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     System.Windows.Forms.Application.Restart();
                     Environment.Exit(0);
@@ -77,7 +86,7 @@ namespace TestFN2
                 else
                 {
                     // user clicked no
-                }
+                }/*/
                 return;
             }
 
@@ -163,6 +172,11 @@ namespace TestFN2
                                                           painelWall.ClientSize.Width - thickness,
                                                           painelWall.ClientSize.Height - thickness));
             }
+        }
+
+        private void lblYes_Click(object sender, EventArgs e)
+        {
+            //try again
         }
     }
 }

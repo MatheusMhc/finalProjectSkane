@@ -32,10 +32,18 @@
             tableGridGameSkane = new TableLayoutPanel();
             timeTic = new System.Windows.Forms.Timer(components);
             painelWall = new Panel();
-            groupBox1 = new GroupBox();
+            grpBoxScore = new GroupBox();
+            label1 = new Label();
+            picBoxDirectionals = new PictureBox();
             lblScoreValue = new Label();
             lblScoreName = new Label();
-            groupBox1.SuspendLayout();
+            picBoxYouDied = new PictureBox();
+            lblDoYouContinue = new Label();
+            lblYes = new Label();
+            lblNo = new Label();
+            grpBoxScore.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)picBoxDirectionals).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picBoxYouDied).BeginInit();
             SuspendLayout();
             // 
             // tableGridGameSkane
@@ -143,17 +151,38 @@
             painelWall.TabIndex = 1;
             painelWall.Paint += panel1_Paint;
             // 
-            // groupBox1
+            // grpBoxScore
             // 
-            groupBox1.Controls.Add(lblScoreValue);
-            groupBox1.Controls.Add(lblScoreName);
-            groupBox1.Font = new Font("Snap ITC", 20F, FontStyle.Bold, GraphicsUnit.Point);
-            groupBox1.Location = new Point(483, 9);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(288, 218);
-            groupBox1.TabIndex = 2;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "Snake Game";
+            grpBoxScore.Controls.Add(label1);
+            grpBoxScore.Controls.Add(picBoxDirectionals);
+            grpBoxScore.Controls.Add(lblScoreValue);
+            grpBoxScore.Controls.Add(lblScoreName);
+            grpBoxScore.Font = new Font("Snap ITC", 20F, FontStyle.Bold, GraphicsUnit.Point);
+            grpBoxScore.Location = new Point(483, 9);
+            grpBoxScore.Name = "grpBoxScore";
+            grpBoxScore.Size = new Size(288, 218);
+            grpBoxScore.TabIndex = 2;
+            grpBoxScore.TabStop = false;
+            grpBoxScore.Text = "Snake Game";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(6, 153);
+            label1.Name = "label1";
+            label1.Size = new Size(87, 35);
+            label1.TabIndex = 3;
+            label1.Text = "Use:";
+            // 
+            // picBoxDirectionals
+            // 
+            picBoxDirectionals.Image = Properties.Resources.directionals;
+            picBoxDirectionals.Location = new Point(102, 106);
+            picBoxDirectionals.Name = "picBoxDirectionals";
+            picBoxDirectionals.Size = new Size(180, 106);
+            picBoxDirectionals.SizeMode = PictureBoxSizeMode.StretchImage;
+            picBoxDirectionals.TabIndex = 2;
+            picBoxDirectionals.TabStop = false;
             // 
             // lblScoreValue
             // 
@@ -174,22 +203,78 @@
             lblScoreName.TabIndex = 0;
             lblScoreName.Text = "Score:";
             // 
+            // picBoxYouDied
+            // 
+            picBoxYouDied.Image = Properties.Resources.youdied;
+            picBoxYouDied.Location = new Point(5, 9);
+            picBoxYouDied.Name = "picBoxYouDied";
+            picBoxYouDied.Size = new Size(776, 479);
+            picBoxYouDied.SizeMode = PictureBoxSizeMode.StretchImage;
+            picBoxYouDied.TabIndex = 3;
+            picBoxYouDied.TabStop = false;
+            picBoxYouDied.Visible = false;
+            // 
+            // lblDoYouContinue
+            // 
+            lblDoYouContinue.AutoSize = true;
+            lblDoYouContinue.BackColor = Color.Black;
+            lblDoYouContinue.Font = new Font("Snap ITC", 20F, FontStyle.Regular, GraphicsUnit.Point);
+            lblDoYouContinue.ForeColor = Color.White;
+            lblDoYouContinue.Location = new Point(187, 358);
+            lblDoYouContinue.Name = "lblDoYouContinue";
+            lblDoYouContinue.Size = new Size(401, 35);
+            lblDoYouContinue.TabIndex = 4;
+            lblDoYouContinue.Text = "Do You Want Try Again?";
+            // 
+            // lblYes
+            // 
+            lblYes.AutoSize = true;
+            lblYes.BackColor = Color.Black;
+            lblYes.Font = new Font("Snap ITC", 20F, FontStyle.Regular, GraphicsUnit.Point);
+            lblYes.ForeColor = Color.White;
+            lblYes.Location = new Point(187, 433);
+            lblYes.Name = "lblYes";
+            lblYes.Size = new Size(73, 35);
+            lblYes.TabIndex = 5;
+            lblYes.Text = "Yes";
+            lblYes.Click += lblYes_Click;
+            // 
+            // lblNo
+            // 
+            lblNo.AutoSize = true;
+            lblNo.BackColor = Color.Black;
+            lblNo.Font = new Font("Snap ITC", 20F, FontStyle.Regular, GraphicsUnit.Point);
+            lblNo.ForeColor = Color.White;
+            lblNo.Location = new Point(515, 433);
+            lblNo.Name = "lblNo";
+            lblNo.Size = new Size(56, 35);
+            lblNo.TabIndex = 6;
+            lblNo.Text = "No";
+            lblNo.Click += lblYes_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(784, 491);
-            Controls.Add(groupBox1);
+            Controls.Add(lblNo);
+            Controls.Add(lblYes);
+            Controls.Add(lblDoYouContinue);
+            Controls.Add(grpBoxScore);
             Controls.Add(tableGridGameSkane);
             Controls.Add(painelWall);
+            Controls.Add(picBoxYouDied);
             Name = "Form1";
             Padding = new Padding(10);
-            Text = "Form1";
+            Text = "Snake Game";
             KeyDown += Form1_KeyDown;
             KeyUp += Form1_KeyUp;
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
+            grpBoxScore.ResumeLayout(false);
+            grpBoxScore.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)picBoxDirectionals).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picBoxYouDied).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -197,8 +282,14 @@
         private TableLayoutPanel tableGridGameSkane;
         private System.Windows.Forms.Timer timeTic;
         private Panel painelWall;
-        private GroupBox groupBox1;
+        private GroupBox grpBoxScore;
         private Label lblScoreValue;
         private Label lblScoreName;
+        private PictureBox picBoxDirectionals;
+        private Label label1;
+        private PictureBox picBoxYouDied;
+        private Label lblDoYouContinue;
+        private Label lblYes;
+        private Label lblNo;
     }
 }

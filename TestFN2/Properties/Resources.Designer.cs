@@ -63,9 +63,29 @@ namespace TestFN2.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap directionals {
+            get {
+                object obj = ResourceManager.GetObject("directionals", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap snake1_inPixio__1_ {
             get {
                 object obj = ResourceManager.GetObject("snake1_inPixio (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap youdied {
+            get {
+                object obj = ResourceManager.GetObject("youdied", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
