@@ -185,7 +185,6 @@
             Name = "Form1";
             Padding = new Padding(10);
             Text = "Form1";
-            Load += Form1_Load;
             KeyDown += Form1_KeyDown;
             KeyUp += Form1_KeyUp;
             groupBox1.ResumeLayout(false);

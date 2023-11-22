@@ -14,11 +14,21 @@ namespace TestFN2
         {
             InitializeComponent();
         }
+        public Form1(Menu menu, int interval)
+        {
+            InitializeComponent();
+            menu.loadingProgress.Visible = true;
+            timeTic.Interval = interval;
+            loadPanelOnGrid(menu);
+            
+            menu.Hide();
+        }
+
 
         Snake snake = new Snake();
         Food food = new Food();
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void loadPanelOnGrid(Menu menu)
         {
             for (int i = 0; i < tableGridGameSkane.RowCount; i++)
             {
@@ -28,6 +38,7 @@ namespace TestFN2
                     panel.Margin = new Padding(0);
                     tableGridGameSkane.Controls.Add(panel, j, i);
                 }
+                menu.loadingProgress.PerformStep();
             }
         }
 
