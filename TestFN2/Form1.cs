@@ -9,6 +9,8 @@ namespace TestFN2
 
         bool isKeyDown = false;
         int score = 0;
+        Menu menu;
+        int interval;
 
         public Form1()
         {
@@ -16,21 +18,38 @@ namespace TestFN2
         }
         public Form1(Menu menu, int interval)
         {
+            this.menu = menu;
+            this.interval = interval;
             InitializeComponent();
             lblDoYouContinue.Visible = false;
             lblYes.Visible = false;
             lblNo.Visible = false;
             menu.loadingProgress.Visible = true;
             timeTic.Interval = interval;
-            loadPanelOnGrid(menu);
+            loadPanelOnGrid(ref menu.loadingProgress);
 
             menu.Hide();
+        }
+
+        public Form1(Form1 form, int interval)
+        {
+            this.interval = interval;
+            InitializeComponent();
+            lblDoYouContinue.Visible = false;
+            lblYes.Visible = false;
+            lblNo.Visible = false;
+            form.loadProgressGame.Visible = true;
+            timeTic.Interval = interval;
+            loadPanelOnGrid(ref form.loadProgressGame);
+
+            form.Hide();
+
         }
 
         Snake snake = new Snake();
         Food food = new Food();
 
-        private void loadPanelOnGrid(Menu menu)
+        private void loadPanelOnGrid(ref ProgressBar barProgress)
         {
             for (int i = 0; i < tableGridGameSkane.RowCount; i++)
             {
@@ -40,7 +59,7 @@ namespace TestFN2
                     panel.Margin = new Padding(0);
                     tableGridGameSkane.Controls.Add(panel, j, i);
                 }
-                menu.loadingProgress.PerformStep();
+                barProgress.PerformStep();
             }
         }
 
@@ -77,16 +96,6 @@ namespace TestFN2
                 lblYes.Visible = true;
                 lblNo.Visible = true;
 
-               /* if (MessageBox.Show("Are you svvcvure?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    System.Windows.Forms.Application.Restart();
-                    Environment.Exit(0);
-
-                }
-                else
-                {
-                    // user clicked no
-                }/*/
                 return;
             }
 
@@ -104,16 +113,16 @@ namespace TestFN2
 
                 if (point.X == tableGridGameSkane.RowCount || point.X < 0 || point.Y == tableGridGameSkane.ColumnCount || point.Y < 0)
                 {
+
                     timeTic.Stop();
-                    if (MessageBox.Show("Are you sure?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                    {
-                        System.Windows.Forms.Application.Restart();
-                        Environment.Exit(0);
-                    }
-                    else
-                    {
-                        // user clicked no
-                    }
+                    tableGridGameSkane.Visible = false;
+                    painelWall.Visible = false;
+                    grpBoxScore.Visible = false;
+                    picBoxYouDied.Visible = true;
+                    lblDoYouContinue.Visible = true;
+                    lblYes.Visible = true;
+                    lblNo.Visible = true;
+
                     return;
                 }
 
@@ -176,7 +185,17 @@ namespace TestFN2
 
         private void lblYes_Click(object sender, EventArgs e)
         {
-            //try again
+            var form1 = new Form1(this, this.interval);
+            form1.Closed += (s, args) => this.Close();
+            form1.Show();
+        }
+
+        private void lblNo_Click(object sender, EventArgs e)
+        {
+
+            var menu = new Menu();
+            this.Close();
+            menu.Show();
         }
     }
 }

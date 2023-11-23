@@ -41,6 +41,7 @@
             lblDoYouContinue = new Label();
             lblYes = new Label();
             lblNo = new Label();
+            loadProgressGame = new ProgressBar();
             grpBoxScore.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picBoxDirectionals).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picBoxYouDied).BeginInit();
@@ -250,13 +251,23 @@
             lblNo.Size = new Size(56, 35);
             lblNo.TabIndex = 6;
             lblNo.Text = "No";
-            lblNo.Click += lblYes_Click;
+            lblNo.Click += lblNo_Click;
+            // 
+            // loadProgressGame
+            // 
+            loadProgressGame.Location = new Point(23, 177);
+            loadProgressGame.Maximum = 400;
+            loadProgressGame.Name = "loadProgressGame";
+            loadProgressGame.Size = new Size(748, 23);
+            loadProgressGame.TabIndex = 7;
+            loadProgressGame.Visible = false;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(784, 491);
+            Controls.Add(loadProgressGame);
             Controls.Add(lblNo);
             Controls.Add(lblYes);
             Controls.Add(lblDoYouContinue);
@@ -291,5 +302,6 @@
         private Label lblDoYouContinue;
         private Label lblYes;
         private Label lblNo;
+        private ProgressBar loadProgressGame;
     }
 }
