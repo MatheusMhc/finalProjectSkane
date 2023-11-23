@@ -92,7 +92,7 @@ namespace TestFN2
 
         private void newGame(int interval)
         {
-            var form2 = new Form1(this, interval);
+            var form2 = new Game(this, interval);
             form2.ShowDialog();
         }
 

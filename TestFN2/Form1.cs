@@ -4,7 +4,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace TestFN2
 {
-    public partial class Form1 : Form
+    public partial class Game : Form
     {
 
         bool isKeyDown = false;
@@ -12,11 +12,11 @@ namespace TestFN2
         Menu menu;
         int interval;
 
-        public Form1()
+        public Game()
         {
             InitializeComponent();
         }
-        public Form1(Menu menu, int interval)
+        public Game(Menu menu, int interval)
         {
             this.menu = menu;
             this.interval = interval;
@@ -31,7 +31,7 @@ namespace TestFN2
             menu.Hide();
         }
 
-        public Form1(Form1 form, int interval)
+        public Game(Game form, int interval)
         {
             this.interval = interval;
             InitializeComponent();
@@ -185,7 +185,7 @@ namespace TestFN2
 
         private void lblYes_Click(object sender, EventArgs e)
         {
-            var form1 = new Form1(this, this.interval);
+            var form1 = new Game(this, this.interval);
             form1.Closed += (s, args) => this.Close();
             form1.Show();
         }
