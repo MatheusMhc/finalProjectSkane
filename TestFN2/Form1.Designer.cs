@@ -221,11 +221,11 @@
             lblDoYouContinue.BackColor = Color.Black;
             lblDoYouContinue.Font = new Font("Snap ITC", 20F, FontStyle.Regular, GraphicsUnit.Point);
             lblDoYouContinue.ForeColor = Color.White;
-            lblDoYouContinue.Location = new Point(187, 358);
+            lblDoYouContinue.Location = new Point(169, 361);
             lblDoYouContinue.Name = "lblDoYouContinue";
-            lblDoYouContinue.Size = new Size(401, 35);
+            lblDoYouContinue.Size = new Size(449, 35);
             lblDoYouContinue.TabIndex = 4;
-            lblDoYouContinue.Text = "Do You Want Try Again?";
+            lblDoYouContinue.Text = "Do You Want To Try Again?";
             // 
             // lblYes
             // 
@@ -262,7 +262,7 @@
             loadProgressGame.TabIndex = 7;
             loadProgressGame.Visible = false;
             // 
-            // Form1
+            // Game
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -275,7 +275,7 @@
             Controls.Add(tableGridGameSkane);
             Controls.Add(painelWall);
             Controls.Add(picBoxYouDied);
-            Name = "Form1";
+            Name = "Game";
             Padding = new Padding(10);
             Text = "Snake Game";
             KeyDown += Form1_KeyDown;
