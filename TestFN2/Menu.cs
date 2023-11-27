@@ -25,6 +25,12 @@ namespace TestFN2
             lblAboutValue.Visible = false;
         }
 
+        private void selectSound()
+        {
+            System.Media.SoundPlayer player = new System.Media.SoundPlayer(Properties.Resources.game_start_6104);
+            player.Play();
+        }
+
         private void lblNewGame_MouseMove(object sender, MouseEventArgs e)
         {
             lblNewGame.ForeColor = Color.Brown;
@@ -57,6 +63,7 @@ namespace TestFN2
 
         private void lblNewGame_MouseClick(object sender, MouseEventArgs e)
         {
+            selectSound();
             enableDisableLabels(false);
         }
 
@@ -98,16 +105,19 @@ namespace TestFN2
 
         private void lblHard_Click(object sender, EventArgs e)
         {
+            selectSound();
             newGame(50);
         }
 
         private void lblMedium_Click(object sender, EventArgs e)
         {
+            selectSound();
             newGame(150);
         }
 
         private void lblEasy_Click(object sender, EventArgs e)
         {
+            selectSound();
             newGame(250);
         }
 
@@ -123,6 +133,7 @@ namespace TestFN2
 
         private void lblBack_Click(object sender, EventArgs e)
         {
+            selectSound();
             enableDisableLabels(true);
         }
 
@@ -150,6 +161,7 @@ namespace TestFN2
 
         private void lblAbout_Click(object sender, EventArgs e)
         {
+            selectSound();
             enableFirsScreenLabels(false);
             lblBack.Visible = true;
             lblAboutValue.Visible = true;

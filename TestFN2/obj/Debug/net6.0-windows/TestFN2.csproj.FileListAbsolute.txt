@@ -67,3 +67,11 @@ C:\Users\Matheus.daSilva\Source\Repos\finalProjectSkane\TestFN2\obj\Debug\net6.0
 C:\Users\Matheus.daSilva\Source\Repos\finalProjectSkane\TestFN2\obj\Debug\net6.0-windows\ref\TestFN2.dll
 C:\Users\Matheus.daSilva\Source\Repos\finalProjectSkane\TestFN2\obj\Debug\net6.0-windows\TestFN2.Menu.resources
 C:\Users\Matheus.daSilva\Source\Repos\finalProjectSkane\TestFN2\obj\Debug\net6.0-windows\TestFN2.Game.resources
+C:\Users\Matheus.daSilva\Source\Repos\finalProjectSkane\TestFN2\bin\Debug\net6.0-windows\NAudio.dll
+C:\Users\Matheus.daSilva\Source\Repos\finalProjectSkane\TestFN2\bin\Debug\net6.0-windows\NAudio.Asio.dll
+C:\Users\Matheus.daSilva\Source\Repos\finalProjectSkane\TestFN2\bin\Debug\net6.0-windows\NAudio.Core.dll
+C:\Users\Matheus.daSilva\Source\Repos\finalProjectSkane\TestFN2\bin\Debug\net6.0-windows\NAudio.Midi.dll
+C:\Users\Matheus.daSilva\Source\Repos\finalProjectSkane\TestFN2\bin\Debug\net6.0-windows\NAudio.Wasapi.dll
+C:\Users\Matheus.daSilva\Source\Repos\finalProjectSkane\TestFN2\bin\Debug\net6.0-windows\NAudio.WinForms.dll
+C:\Users\Matheus.daSilva\Source\Repos\finalProjectSkane\TestFN2\bin\Debug\net6.0-windows\NAudio.WinMM.dll
+C:\Users\Matheus.daSilva\Source\Repos\finalProjectSkane\TestFN2\obj\Debug\net6.0-windows\TestFN2.csproj.CopyComplete

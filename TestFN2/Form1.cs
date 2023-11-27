@@ -1,6 +1,9 @@
 using System.Drawing;
+using System.Media;
+using System.Reflection;
 using TestFN2.Business;
-using static System.Net.Mime.MediaTypeNames;
+using NAudio.Wave;
+using System.Xml.Linq;
 
 namespace TestFN2
 {
@@ -12,12 +15,16 @@ namespace TestFN2
         Menu menu;
         int interval;
 
+        WaveOut soundPlayer = new WaveOut();
+        AudioFileReader sound = new AudioFileReader(name);
         public Game()
         {
             InitializeComponent();
+          
         }
         public Game(Menu menu, int interval)
         {
+            selectSoundGame("../../../resources/game.wav");
             this.menu = menu;
             this.interval = interval;
             InitializeComponent();
@@ -33,6 +40,7 @@ namespace TestFN2
 
         public Game(Game form, int interval)
         {
+            selectSoundGame("../../../resources/game.wav");
             this.interval = interval;
             InitializeComponent();
             lblDoYouContinue.Visible = false;
@@ -41,13 +49,19 @@ namespace TestFN2
             form.loadProgressGame.Visible = true;
             timeTic.Interval = interval;
             loadPanelOnGrid(ref form.loadProgressGame);
-
             form.Hide();
 
         }
 
         Snake snake = new Snake();
         Food food = new Food();
+
+        private void selectSoundGame(string name)
+        {
+            sound = new AudioFileReader(name);
+            soundPlayer.Init(sound);
+            soundPlayer.Play();
+        }
 
         private void loadPanelOnGrid(ref ProgressBar barProgress)
         {
@@ -61,6 +75,20 @@ namespace TestFN2
                 }
                 barProgress.PerformStep();
             }
+        }
+
+        private void youdied()
+        {
+            soundPlayer.Stop();
+            timeTic.Stop();
+            selectSoundGame("../../../resources/youdied.wav");
+            tableGridGameSkane.Visible = false;
+            painelWall.Visible = false;
+            grpBoxScore.Visible = false;
+            picBoxYouDied.Visible = true;
+            lblDoYouContinue.Visible = true;
+            lblYes.Visible = true;
+            lblNo.Visible = true;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -87,14 +115,7 @@ namespace TestFN2
 
             if (snake.wasIBitten())
             {
-                timeTic.Stop();
-                tableGridGameSkane.Visible = false;
-                painelWall.Visible = false;
-                grpBoxScore.Visible = false;
-                picBoxYouDied.Visible = true;
-                lblDoYouContinue.Visible = true;
-                lblYes.Visible = true;
-                lblNo.Visible = true;
+                youdied();
 
                 return;
             }
@@ -102,6 +123,7 @@ namespace TestFN2
 
             if (food.wasEaten(snake.returnSnakePoints()))
             {
+                selectSoundGame("../../../resources/eatdood.wav");
                 snake.increaseMySize();
                 score = score + 1;
                 lblScoreValue.Text = score.ToString();
@@ -113,16 +135,7 @@ namespace TestFN2
 
                 if (point.X == tableGridGameSkane.RowCount || point.X < 0 || point.Y == tableGridGameSkane.ColumnCount || point.Y < 0)
                 {
-
-                    timeTic.Stop();
-                    tableGridGameSkane.Visible = false;
-                    painelWall.Visible = false;
-                    grpBoxScore.Visible = false;
-                    picBoxYouDied.Visible = true;
-                    lblDoYouContinue.Visible = true;
-                    lblYes.Visible = true;
-                    lblNo.Visible = true;
-
+                    youdied();
                     return;
                 }
 
