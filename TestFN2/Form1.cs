@@ -16,7 +16,6 @@ namespace TestFN2
         int interval;
 
         WaveOut soundPlayer = new WaveOut();
-        AudioFileReader sound = new AudioFileReader(name);
         public Game()
         {
             InitializeComponent();
@@ -58,7 +57,7 @@ namespace TestFN2
 
         private void selectSoundGame(string name)
         {
-            sound = new AudioFileReader(name);
+            AudioFileReader sound = new AudioFileReader(name);
             soundPlayer.Init(sound);
             soundPlayer.Play();
         }
@@ -77,10 +76,11 @@ namespace TestFN2
             }
         }
 
-        private void youdied()
+        private void youDied()
         {
-            soundPlayer.Stop();
+            soundPlayer.Dispose();
             timeTic.Stop();
+            soundPlayer = new WaveOut();
             selectSoundGame("../../../resources/youdied.wav");
             tableGridGameSkane.Visible = false;
             painelWall.Visible = false;
@@ -115,8 +115,7 @@ namespace TestFN2
 
             if (snake.wasIBitten())
             {
-                youdied();
-
+                youDied();
                 return;
             }
 
@@ -135,7 +134,7 @@ namespace TestFN2
 
                 if (point.X == tableGridGameSkane.RowCount || point.X < 0 || point.Y == tableGridGameSkane.ColumnCount || point.Y < 0)
                 {
-                    youdied();
+                    youDied();
                     return;
                 }
 
@@ -198,6 +197,7 @@ namespace TestFN2
 
         private void lblYes_Click(object sender, EventArgs e)
         {
+            soundPlayer.Dispose();
             var form1 = new Game(this, this.interval);
             form1.Closed += (s, args) => this.Close();
             form1.Show();
@@ -205,7 +205,6 @@ namespace TestFN2
 
         private void lblNo_Click(object sender, EventArgs e)
         {
-
             var menu = new Menu();
             this.Close();
             menu.Show();
