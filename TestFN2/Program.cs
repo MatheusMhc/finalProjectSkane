@@ -1,4 +1,4 @@
-namespace TestFN2
+namespace SnakeGameSpace
 {
     internal static class Program
     {

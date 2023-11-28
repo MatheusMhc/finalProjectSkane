@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TestFN2.Properties {
+namespace SnakeGameSpace.Properties {
     using System;
     
     

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TestFN2.Business
+namespace SnakeGameSpace.Business
 {
     internal class Snake
     {
@@ -264,6 +264,11 @@ namespace TestFN2.Business
                 if (item.X == head.X && item.Y == head.Y) check++; continue;
             }
             return check>1;
+        }
+
+        public bool didIHitTheWall(int rowNum, int colNum)
+        {
+            return head.X == rowNum || head.X < 0 || head.Y == colNum || head.Y < 0;
         }
     }
 }

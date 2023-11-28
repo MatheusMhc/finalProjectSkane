@@ -1,4 +1,4 @@
-﻿namespace TestFN2
+﻿namespace SnakeGameSpace
 {
     partial class Menu
     {
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menu));
             label1 = new Label();
             pictureBox1 = new PictureBox();
             lblExit = new Label();
@@ -54,7 +55,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources.snake1_inPixio__1_;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(12, 2);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(437, 436);
@@ -188,8 +189,9 @@
             Controls.Add(lblExit);
             Controls.Add(label1);
             Controls.Add(pictureBox1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Menu";
-            Text = "Form2";
+            Text = "Snake Game";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
