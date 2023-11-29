@@ -9,16 +9,23 @@ namespace SnakeGameSpace
 {
     public partial class Game : Form
     {
-
+        /*Do not allow press two buttons at the same time*/
         bool isKeyDown = false;
+
         int score = 0;
+        /* Previous Menu Screen */
         Menu menu;
+
+        /*interval Timer Level Game*/
         int interval;
 
         WaveOut soundPlayer = new WaveOut();
-        Snake snake = new Snake();
-        Food food = new Food();
 
+        Snake snake = new Snake();
+
+        Food food = new Food();
+        
+        /*FILO queue to control sequence of moviments*/
         Queue<BendPoint> queueChanges = new Queue<BendPoint>();
 
         public Game()
@@ -38,7 +45,6 @@ namespace SnakeGameSpace
             menu.loadingProgress.Visible = true;
             timeTic.Interval = interval;
             loadPanelOnGrid(ref menu.loadingProgress);
-
             menu.Hide();
         }
 
@@ -116,12 +122,14 @@ namespace SnakeGameSpace
         {
 
             cleanGrid();
-            BendPoint turnPoins = new BendPoint();
+            BendPoint bendPoints = new BendPoint();
+
+            /*Get the next moviment*/
             if (queueChanges.Count != 0)
             {
-                turnPoins = queueChanges.Dequeue();
-                snake.addBendPointIfNotExist(turnPoins);
-                snake.headDirection = turnPoins.headDirection;
+                bendPoints = queueChanges.Dequeue();
+                snake.addBendPointIfNotExist(bendPoints);
+                snake.headDirection = bendPoints.headDirection;
             }
 
             creteFood();
@@ -137,7 +145,7 @@ namespace SnakeGameSpace
                 return;
             }
 
-            if (food.wasEaten(snake.returnSnakePoints()))
+            if (food.wasEaten(snakePoints))
             {
                 selectSoundGame("../../../resources/eatdood.wav");
                 snake.increaseMySize();
@@ -145,18 +153,19 @@ namespace SnakeGameSpace
                 lblScoreValue.Text = score.ToString();
                 food.created = false;
             }
-            
+
+            if (snake.didIHitTheWall(tableGridGameSkane.RowCount, tableGridGameSkane.ColumnCount))
+            {
+                youDied();
+                return;
+            }
+
+
             foreach (Point point in snakePoints)
             {
-
-                if (snake.didIHitTheWall(tableGridGameSkane.RowCount, tableGridGameSkane.ColumnCount))
-                {
-                    youDied();
-                    return;
-                }
-
                 tableGridGameSkane.GetControlFromPosition(point.Y, point.X).BackColor = Color.Black;
             }
+
             tableGridGameSkane.GetControlFromPosition(food.point.Y, food.point.X).BackColor = Color.Blue;
         }
 
