@@ -493,9 +493,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Matheus.daSilva\\Source\\Repos\\finalProjectSkane\\TestFN2\\SnakeGameProjec.csproj",
-      "projectName": "SnakeGameProjec",
-      "projectPath": "C:\\Users\\Matheus.daSilva\\Source\\Repos\\finalProjectSkane\\TestFN2\\SnakeGameProjec.csproj",
+      "projectUniqueName": "C:\\Users\\Matheus.daSilva\\Source\\Repos\\finalProjectSkane\\TestFN2\\SnakeGameProject.csproj",
+      "projectName": "SnakeGameProject",
+      "projectPath": "C:\\Users\\Matheus.daSilva\\Source\\Repos\\finalProjectSkane\\TestFN2\\SnakeGameProject.csproj",
       "packagesPath": "C:\\Users\\Matheus.daSilva\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Matheus.daSilva\\Source\\Repos\\finalProjectSkane\\TestFN2\\obj\\",
       "projectStyle": "PackageReference",

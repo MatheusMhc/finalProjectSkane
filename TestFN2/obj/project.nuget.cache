@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "JQv/G5QcmuaEeSpW/NiGxMoZCkzY5H/xPW+n+SSBgCMuTCgE+5KoFu4Vs67JMIw5syEwIDZmsVwxN7B185fQSw==",
+  "dgSpecHash": "XocUv4dTrISfN09CpK9fflJYQx0IlDdDpm9qj70KwUEtGh/6IqpmDwi6IzLMYB/XqU/hrkVdMRm8XR4q1dKThg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Matheus.daSilva\\Source\\Repos\\finalProjectSkane\\TestFN2\\SnakeGameProjec.csproj",
+  "projectFilePath": "C:\\Users\\Matheus.daSilva\\Source\\Repos\\finalProjectSkane\\TestFN2\\SnakeGameProject.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Matheus.daSilva\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\Matheus.daSilva\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
