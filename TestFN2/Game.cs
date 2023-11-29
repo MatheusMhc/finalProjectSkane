@@ -160,7 +160,6 @@ namespace SnakeGameSpace
                 return;
             }
 
-
             foreach (Point point in snakePoints)
             {
                 tableGridGameSkane.GetControlFromPosition(point.Y, point.X).BackColor = Color.Black;
