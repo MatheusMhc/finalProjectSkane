@@ -14,7 +14,7 @@ namespace SnakeGameSpace.Business
 
         public Point tail { get; set; }
 
-        public List<TurnPoint> turnPoints { get; set; } 
+        public List<BendPoint> turnPoints { get; set; } 
 
         public Directions headDirection { get; set; }
 
@@ -24,14 +24,14 @@ namespace SnakeGameSpace.Business
 
         public Snake() { 
             
-            head = new Point(12 , 0);
+            head = new Point(2 , 0);
             tail = new Point(0, 0);
             headDirection = Directions.DOWN;
             tailDirection = Directions.DOWN;
-            turnPoints = new List<TurnPoint>();
+            turnPoints = new List<BendPoint>();
         }
 
-        public void addTurnPointIfNotExist(TurnPoint turnPoint)
+        public void addTurnPointIfNotExist(BendPoint turnPoint)
         {
             int a = turnPoint.contains(turnPoints);
             if (a < 0) {
@@ -173,7 +173,7 @@ namespace SnakeGameSpace.Business
             else
             {
                 Point temp = tail;
-                TurnPoint first = turnPoints.First();
+                BendPoint first = turnPoints.First();
                 if(tail.X == first.turnPoint.X && tail.Y == first.turnPoint.Y)
                 {
                     turnPoints.Remove(first);
@@ -181,7 +181,7 @@ namespace SnakeGameSpace.Business
                     stackSnake.Push(tail);
                 }
 
-                foreach (TurnPoint p in turnPoints)
+                foreach (BendPoint p in turnPoints)
                 {
                     if (temp.X == p.turnPoint.X && temp.Y > p.turnPoint.Y)
                     {

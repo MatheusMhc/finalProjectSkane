@@ -177,6 +177,7 @@ namespace SnakeGameSpace
         private void lblExit_Click(object sender, EventArgs e)
         {
             this.Dispose();
+            Application.Exit();
         }
     }
 }

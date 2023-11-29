@@ -64,8 +64,6 @@ C:\Users\Matheus.daSilva\Source\Repos\finalProjectSkane\TestFN2\obj\Debug\net6.0
 C:\Users\Matheus.daSilva\Source\Repos\finalProjectSkane\TestFN2\obj\Debug\net6.0-windows\TestFN2.pdb
 C:\Users\Matheus.daSilva\Source\Repos\finalProjectSkane\TestFN2\obj\Debug\net6.0-windows\TestFN2.genruntimeconfig.cache
 C:\Users\Matheus.daSilva\Source\Repos\finalProjectSkane\TestFN2\obj\Debug\net6.0-windows\ref\TestFN2.dll
-C:\Users\Matheus.daSilva\Source\Repos\finalProjectSkane\TestFN2\obj\Debug\net6.0-windows\TestFN2.Menu.resources
-C:\Users\Matheus.daSilva\Source\Repos\finalProjectSkane\TestFN2\obj\Debug\net6.0-windows\TestFN2.Game.resources
 C:\Users\Matheus.daSilva\Source\Repos\finalProjectSkane\TestFN2\bin\Debug\net6.0-windows\NAudio.dll
 C:\Users\Matheus.daSilva\Source\Repos\finalProjectSkane\TestFN2\bin\Debug\net6.0-windows\NAudio.Asio.dll
 C:\Users\Matheus.daSilva\Source\Repos\finalProjectSkane\TestFN2\bin\Debug\net6.0-windows\NAudio.Core.dll
@@ -85,3 +83,5 @@ C:\Users\mathe\Source\Repos\finalProjectSkane\TestFN2\obj\Debug\net6.0-windows\T
 C:\Users\mathe\Source\Repos\finalProjectSkane\TestFN2\obj\Debug\net6.0-windows\TestFN2.csproj.CopyComplete
 C:\Users\mathe\Source\Repos\finalProjectSkane\TestFN2\obj\Debug\net6.0-windows\SnakeGameSpace.Game.resources
 C:\Users\mathe\Source\Repos\finalProjectSkane\TestFN2\obj\Debug\net6.0-windows\SnakeGameSpace.Menu.resources
+C:\Users\Matheus.daSilva\Source\Repos\finalProjectSkane\TestFN2\obj\Debug\net6.0-windows\SnakeGameSpace.Game.resources
+C:\Users\Matheus.daSilva\Source\Repos\finalProjectSkane\TestFN2\obj\Debug\net6.0-windows\SnakeGameSpace.Menu.resources

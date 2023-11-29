@@ -19,7 +19,7 @@ namespace SnakeGameSpace
         Snake snake = new Snake();
         Food food = new Food();
 
-        Queue<TurnPoint> queueChanges = new Queue<TurnPoint>();
+        Queue<BendPoint> queueChanges = new Queue<BendPoint>();
 
         public Game()
         {
@@ -116,7 +116,7 @@ namespace SnakeGameSpace
         {
 
             cleanGrid();
-            TurnPoint turnPoins = new TurnPoint();
+            BendPoint turnPoins = new BendPoint();
             if (queueChanges.Count != 0)
             {
                 turnPoins = queueChanges.Dequeue();
@@ -142,7 +142,7 @@ namespace SnakeGameSpace
             {
                 selectSoundGame("../../../resources/eatdood.wav");
                 snake.increaseMySize();
-                score = score++;
+                score = ++score;
                 lblScoreValue.Text = score.ToString();
                 food.created = false;
             }
@@ -173,19 +173,19 @@ namespace SnakeGameSpace
             {
                 case Keys.Left:
                     if (snake.headDirection == Directions.RIGHT || snake.headDirection == Directions.LEFT) return;
-                    queueChanges.Enqueue(new TurnPoint(new Point(snake.head.X, snake.head.Y), Directions.LEFT, snake.tailDirection));
+                    queueChanges.Enqueue(new BendPoint(new Point(snake.head.X, snake.head.Y), Directions.LEFT, snake.tailDirection));
                     break;
                 case Keys.Right:
                     if (snake.headDirection == Directions.LEFT || snake.headDirection == Directions.RIGHT) return;
-                    queueChanges.Enqueue(new TurnPoint(new Point(snake.head.X, snake.head.Y), Directions.RIGHT, snake.tailDirection));
+                    queueChanges.Enqueue(new BendPoint(new Point(snake.head.X, snake.head.Y), Directions.RIGHT, snake.tailDirection));
                     break;
                 case Keys.Up:
                     if (snake.headDirection == Directions.DOWN || snake.headDirection == Directions.UP) return;
-                    queueChanges.Enqueue(new TurnPoint(new Point(snake.head.X, snake.head.Y), Directions.UP, snake.tailDirection));
+                    queueChanges.Enqueue(new BendPoint(new Point(snake.head.X, snake.head.Y), Directions.UP, snake.tailDirection));
                     break;
                 case Keys.Down:
                     if (snake.headDirection == Directions.UP || snake.headDirection == Directions.DOWN) return;
-                    queueChanges.Enqueue(new TurnPoint(new Point(snake.head.X, snake.head.Y), Directions.DOWN, snake.tailDirection));
+                    queueChanges.Enqueue(new BendPoint(new Point(snake.head.X, snake.head.Y), Directions.DOWN, snake.tailDirection));
                     break;
             }
         }
@@ -219,9 +219,7 @@ namespace SnakeGameSpace
 
         private void lblNo_Click(object sender, EventArgs e)
         {
-            var menu = new Menu();
-            this.Dispose();
-            menu.Show();
+            Application.Restart();
         }
     }
 }
