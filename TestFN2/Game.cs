@@ -120,7 +120,7 @@ namespace SnakeGameSpace
             if (queueChanges.Count != 0)
             {
                 turnPoins = queueChanges.Dequeue();
-                snake.addTurnPointIfNotExist(turnPoins);
+                snake.addBendPointIfNotExist(turnPoins);
                 snake.headDirection = turnPoins.headDirection;
             }
 
@@ -136,7 +136,6 @@ namespace SnakeGameSpace
                 youDied();
                 return;
             }
-
 
             if (food.wasEaten(snake.returnSnakePoints()))
             {

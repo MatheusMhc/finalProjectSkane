@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,12 +15,13 @@ namespace SnakeGameSpace.Business
 
         public Point tail { get; set; }
 
-        public List<BendPoint> turnPoints { get; set; } 
+        public List<BendPoint> bendPoints { get; set; } 
 
         public Directions headDirection { get; set; }
 
         public Directions tailDirection { get; set; }
 
+        /*FIFO the head is always on the top*/
         Stack<Point> stackSnake;
 
         public Snake() { 
@@ -28,22 +30,26 @@ namespace SnakeGameSpace.Business
             tail = new Point(0, 0);
             headDirection = Directions.DOWN;
             tailDirection = Directions.DOWN;
-            turnPoints = new List<BendPoint>();
+            bendPoints = new List<BendPoint>();
         }
 
-        public void addTurnPointIfNotExist(BendPoint turnPoint)
+        public void addBendPointIfNotExist(BendPoint bendPoint)
         {
-            int a = turnPoint.contains(turnPoints);
-            if (a < 0) {
-                this.turnPoints.Add(turnPoint);
+            int bendPointFind = bendPoint.contains(bendPoints);
+            if (bendPointFind < 0) {
+                this.bendPoints.Add(bendPoint);
                 return;
             }
 
-            turnPoints.Insert(a, turnPoint);
+            /* I am adding again because the direction can be different, and I wnat always the newest one 
+               So, if for any reason the same point was send =, for example, left and right was pressed very fast in the same point,
+               the last one will be the correct moviment*/
+            bendPoints.Insert(bendPointFind, bendPoint);
         }
 
         public void increaseMySize()
         {
+            /* add a point to the end */
             if (this.tailDirection == Directions.RIGHT)
             {
                 Point point = new Point(this.tail.X, this.tail.Y - 1);
@@ -100,42 +106,43 @@ namespace SnakeGameSpace.Business
                 this.headDirection = Directions.UP;
                 this.head = point;
             }
+
         }
 
         public void moveTailDirection()
         {
             if (this.tailDirection == Directions.RIGHT)
-            {
-                Point point = new Point(this.tail.X, this.tail.Y + 1);
-                this.tailDirection = Directions.RIGHT;
-                this.tail = point;
-            }
+             {
+                 Point point = new Point(this.tail.X, this.tail.Y + 1);
+                 this.tailDirection = Directions.RIGHT;
+                 this.tail = point;
+             }
 
-            if (this.tailDirection == Directions.DOWN)
-            {
-                Point point = new Point(this.tail.X + 1, this.tail.Y);
-                this.tailDirection = Directions.DOWN;
-                this.tail = point;
-            }
-            if (this.tailDirection == Directions.LEFT)
-            {
-                Point point = new Point(this.tail.X, this.tail.Y - 1);
-                this.tailDirection = Directions.LEFT;
-                this.tail = point;
-            }
-            if (this.tailDirection == Directions.UP)
-            {
-                Point point = new Point(this.tail.X - 1, this.tail.Y);
-                this.tailDirection = Directions.UP;
-                this.tail = point;
-            }
+             if (this.tailDirection == Directions.DOWN)
+             {
+                 Point point = new Point(this.tail.X + 1, this.tail.Y);
+                 this.tailDirection = Directions.DOWN;
+                 this.tail = point;
+             }
+             if (this.tailDirection == Directions.LEFT)
+             {
+                 Point point = new Point(this.tail.X, this.tail.Y - 1);
+                 this.tailDirection = Directions.LEFT;
+                 this.tail = point;
+             }
+             if (this.tailDirection == Directions.UP)
+             {
+                 Point point = new Point(this.tail.X - 1, this.tail.Y);
+                 this.tailDirection = Directions.UP;
+                 this.tail = point;
+             }
         }
 
         public Stack<Point> returnSnakePoints()
         {
             stackSnake = new Stack<Point>();
 
-            if(turnPoints.Count == 0)
+            if(bendPoints.Count == 0)
             {
                 if(head.X == tail.X && head.Y > tail.Y)
                 {
@@ -173,18 +180,42 @@ namespace SnakeGameSpace.Business
             else
             {
                 Point temp = tail;
-                BendPoint first = turnPoints.First();
+                BendPoint first = bendPoints.First();
                 if(tail.X == first.turnPoint.X && tail.Y == first.turnPoint.Y)
                 {
-                    turnPoints.Remove(first);
+                    /* When the tail passes the last bendPoint, remove it*/
+                    bendPoints.Remove(first);
                     tailDirection = first.headDirection;
                     stackSnake.Push(tail);
                 }
-
-                foreach (BendPoint p in turnPoints)
+                 /*
+                  *  X ------------------------------------------>
+                  * Y
+                  * |
+                  * |     
+                  * |      
+                  * |
+                  * |
+                  * |
+                  * |
+                    V
+                  */
+                foreach (BendPoint p in bendPoints)
                 {
                     if (temp.X == p.turnPoint.X && temp.Y > p.turnPoint.Y)
                     {
+                        /*
+                         *  X ------------------------------------------>
+                         * Y
+                         * |
+                         * |     *          &
+                         * |      
+                         * |
+                         * |
+                         * |
+                         * |
+                           V
+                         */
                         for (int y = p.turnPoint.Y; y <= temp.Y; y++)
                         {
                             stackSnake.Push(new Point(temp.X, y));
@@ -193,6 +224,18 @@ namespace SnakeGameSpace.Business
 
                     if (temp.X == p.turnPoint.X && temp.Y < p.turnPoint.Y)
                     {
+                        /*
+                         *  X ------------------------------------------>
+                         * Y
+                         * |
+                         * |     &          *
+                         * |      
+                         * |
+                         * |
+                         * |
+                         * |
+                           V
+                         */
                         for (int y = p.turnPoint.Y; y >= temp.Y; y--)
                         {
                             stackSnake.Push(new Point(temp.X, y));
@@ -201,6 +244,18 @@ namespace SnakeGameSpace.Business
 
                     if (temp.Y == p.turnPoint.Y && temp.X > p.turnPoint.X)
                     {
+                        /*
+                         *  X ------------------------------------------>
+                         * Y
+                         * |
+                         * |     *          
+                         * |      
+                         * |      
+                         * |       
+                         * |     &
+                         * |
+                           V
+                         */
                         for (int x = p.turnPoint.X; x <= temp.X; x++)
                         {
                             stackSnake.Push(new Point(x, temp.Y));
@@ -209,6 +264,18 @@ namespace SnakeGameSpace.Business
 
                     if (temp.Y == p.turnPoint.Y && temp.X < p.turnPoint.X)
                     {
+                        /*
+                         *  X ------------------------------------------>
+                         * Y
+                         * |
+                         * |     &          
+                         * |      
+                         * |     
+                         * |    
+                         * |     *
+                         * |
+                           V
+                         */
                         for (int x = p.turnPoint.X; x >= temp.X; x--)
                         {
                             stackSnake.Push(new Point(x, temp.Y));

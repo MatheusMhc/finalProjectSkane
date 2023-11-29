@@ -5,10 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace SnakeGameSpace.Business
-{
+{ /*
+   * This is the class to control the points where the snake bends
+   */
     internal class BendPoint
     {
         public Point turnPoint {  get; set; }
+
         public Directions headDirection { get; set; }
 
         public Directions tailDirection { get; set; }
